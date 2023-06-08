@@ -1,6 +1,6 @@
 package DataSource;
 
-public class Individual {
+public class IndividualP2P {
 
     //POGO classes
 

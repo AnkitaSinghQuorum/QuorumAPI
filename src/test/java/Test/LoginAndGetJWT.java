@@ -1,13 +1,13 @@
 package Test;
 
+import Services.BaseEndpoint;
+import Services.LoginEndpoint;
 import Utils.UtilityFile;
 import io.restassured.response.Response;
-import Services.*;
 import org.apache.log4j.Logger;
 import org.json.simple.parser.ParseException;
-import org.testng.annotations.BeforeTest;
-import java.io.IOException;
 
+import java.io.IOException;
 
 public class LoginAndGetJWT extends LoginEndpoint {
 
@@ -15,17 +15,16 @@ public class LoginAndGetJWT extends LoginEndpoint {
     Response response;
     BaseEndpoint b = new BaseEndpoint();
 
-    @BeforeTest()
-    public String generateAccessToken() throws IOException, ParseException {
+    public String generateAccessTokenP2P() throws IOException, ParseException {
 
-      response = requestSpecification().when().post(b.resource_LoginAndGetJWT).then().spec(responseSpecification()).extract().response();
-      log.info("Access Token generated successfully.");
+      response = requestSpecification().when().post(b.resourceLoginAndGetJWT).then().spec(responseSpecification()).extract().response();
+      log.info("Access Token for P2P generated successfully.");
 
 
-         String accessToken = getJsonPath(response, "access_token");
+         String accessTokenP2P = getJsonPath(response, "access_token");
 
-        log.info("Access Token is "+ accessToken);
-        return accessToken;
+        log.info("Access Token for P2P is "+ accessTokenP2P);
+        return accessTokenP2P;
 
     }
 

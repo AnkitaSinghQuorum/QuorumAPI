@@ -6,7 +6,7 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Login {
+public class LoginP2P {
 
     private String username;
     private String password;

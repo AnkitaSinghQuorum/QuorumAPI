@@ -1,7 +1,8 @@
 package Test;
 
 import Services.BaseEndpoint;
-import Services.IndividualEndpoint;
+import Services.IndividualEndpointP2P;
+import Services.IndividualEndpointP2P;
 import Utils.UtilityFile;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
@@ -12,13 +13,13 @@ import java.io.IOException;
 
 import static io.restassured.RestAssured.given;
 
-public class IndividualTest extends IndividualEndpoint {
+public class IndividualTestP2P extends IndividualEndpointP2P {
     LoginAndGetJWT login = new LoginAndGetJWT();
     BaseEndpoint b = new BaseEndpoint();
 
-    String bearerToken = login.generateAccessToken();
+    String bearerToken = login.generateAccessTokenP2P();
     private static Logger log = UtilityFile.getLogger(UtilityFile.class);
-    public IndividualTest() throws IOException, ParseException {
+    public IndividualTestP2P() throws IOException, ParseException {
     }
 
     public  void setup()
@@ -27,19 +28,19 @@ public class IndividualTest extends IndividualEndpoint {
     }
     // write a method eg. create individual by calling the methods from IndividualEndpoints class
 
-    @Test
+    @Test(groups ={"P2P"})
     public void getIndividuals() throws IOException, ParseException {
         Response response;
 
         response = given().spec(requestSpecification()).header("Authorization","Bearer " + bearerToken)
-                .when().get(b.resource_GetIndividuals)
+                .when().get(b.resourceGetIndividuals)
                 .then().spec(responseSpecification()).extract().response();
         log.info("Request hit successfully and response is received.");
 
         log.info(getJsonPath(response,"Id"));
         log.info("All ids are extracted from response.");
 
-        log.info(response.asString());
+        log.info(response.asPrettyString());
         log.info("Json converted to String successfully.");
 
         log.info("Status code is "+response.getStatusCode());
