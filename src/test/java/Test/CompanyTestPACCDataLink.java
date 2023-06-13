@@ -17,6 +17,7 @@ public class CompanyTestPACCDataLink extends PACCDataLinkEndpoint {
     private static Logger log = UtilityFile.getLogger(UtilityFile.class);
     LoginTestGRAPIServices login = new LoginTestGRAPIServices();
     BaseEndpoint b = new BaseEndpoint();
+    Response response;
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
 
@@ -25,7 +26,6 @@ public class CompanyTestPACCDataLink extends PACCDataLinkEndpoint {
 
     @Test(groups ={"PACCDataLink"})
     public void getPACCCompany() throws IOException, ParseException {
-        Response response;
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetCompany)

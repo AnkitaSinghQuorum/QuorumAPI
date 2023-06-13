@@ -5,9 +5,8 @@
 
         <groups>
             <run>
-<!--                <include name = "PACCDataLink"/>-->
+                <include name = "PACCDataLink"/>
 <!--                <include name = "P2P"/>-->
-                <include name="PACCDataLinktest"/>
 
             </run>
         </groups>

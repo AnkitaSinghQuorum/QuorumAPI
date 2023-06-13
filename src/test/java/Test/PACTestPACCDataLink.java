@@ -9,6 +9,8 @@ import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
@@ -17,6 +19,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     private static Logger log = UtilityFile.getLogger(UtilityFile.class);
     LoginTestGRAPIServices login = new LoginTestGRAPIServices();
     BaseEndpoint b = new BaseEndpoint();
+    Response response;
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
 
@@ -25,7 +28,6 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
 
     @Test(groups ={"PACCDataLink"})
     public void getListOfPACs() throws IOException, ParseException {
-        Response response;
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetListOfPacs)
@@ -43,7 +45,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
 
     @Test(groups ={"PACCDataLink"})
     public void getSinglePAC() throws IOException, ParseException {
-        Response response;
+
         int id = getQueryParamFromJsonFile("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\GetSinglePAC.json","PACID");
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
@@ -59,5 +61,57 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
 
         log.info("Status code is " + response.getStatusCode());
     }
+
+    @Test(groups ={"PACCDataLink"})
+    public void addNewPACCPAC() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\AddNewPACCPAC.json")))
+                .when().post(b.resourceAddNewPACCPAC)
+                .then().spec(responseSpecification()).extract().response();
+
+        log.info("Request hit successfully and response is received for adding new PACC PAC.");
+        log.info("The added PAC ID is " + getJsonPath(response, "PACID"));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
+    @Test(groups ={"PACCDataLink"})
+    public void updatePACCPAC() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\UpdatePACCPAC.json")))
+                .when().patch(b.resourceUpdatePACCPAC)
+                .then().spec(responseSpecification()).extract().response();
+
+        log.info("Request hit successfully and response is received for updating PACC PAC.");
+        log.info("The updated PAC ID is " + getJsonPath(response, "PACID"));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
+    @Test(groups ={"PACCDataLink"})
+    public void deletePACCPAC() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\DeletePACCPAC.json")))
+                .when().post(b.resourceDeletePACCPAC)
+                .then().spec(responseSpecification()).extract().response();
+
+        log.info("Request hit successfully and response is received for deleting PACC PAC.");
+        log.info("The deleted PAC ID is " + getJsonPath(response, "PACID"));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
 
 }

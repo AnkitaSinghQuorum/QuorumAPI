@@ -19,15 +19,15 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     private static Logger log = UtilityFile.getLogger(UtilityFile.class);
     LoginTestGRAPIServices login = new LoginTestGRAPIServices();
     BaseEndpoint b = new BaseEndpoint();
+    Response response;
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
 
     public OrganizationTestPACCDataLink() throws IOException, ParseException {
     }
 
-    @Test(groups ={"PACCDataLinktest"})
+    @Test(groups ={"PACCDataLink"})
     public void getPACCOrganizations() throws IOException, ParseException {
-        Response response;
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetPACCOrganizations)
@@ -46,8 +46,6 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void addNewPACCOrganization() throws IOException, ParseException {
 
-        Response response;
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\AddNewPACCOrganization.json")))
                 .when().post(b.resourceAddNewPACCOrganization)
@@ -65,8 +63,6 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
    @Test(groups ={"PACCDataLink"})
     public void updatePACCOrganization() throws IOException, ParseException {
 
-        Response response;
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\UpdatePACCOrganization.json")))
                 .when().patch(b.resourceUpdatePACCOrganization)
@@ -83,8 +79,6 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
 
     @Test(groups ={"PACCDataLink"})
     public void deletePACCOrganization() throws IOException, ParseException {
-
-        Response response;
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\DeletePACCOrganization.json")))
