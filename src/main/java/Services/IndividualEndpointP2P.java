@@ -22,25 +22,4 @@ public class IndividualEndpointP2P extends UtilityFile {
             return req;
         }
 
-//        int individualId = js.getInt("Id[2]");
-//        return individualId;
-//
-//    }
-//    @Test
-//    public static void getIndividualDetails()
-//    {
-//        int id = GetIndividuals.getIndividuals();
-//        System.out.println("Individual id is "+id);
-//        String bearerToken = LoginAndGenerateAccessToken.generateAccessToken();
-//
-//        RestAssured.baseURI = "http://10.18.5.149/GRAPIServices.Peer2Peer_deploy";
-//        String individualDetails = given().log().all().header("Authorization", "Bearer "+bearerToken)
-//                .when().get("/api/Individuals/"+id)
-//                .then().assertThat().statusCode(200).extract().response().asString();
-//        System.out.println(individualDetails);
-//
-//        JsonPath js = new JsonPath(individualDetails);
-//
-//        Assert.assertEquals(id,js.getInt("Id"));
-//    }
 }

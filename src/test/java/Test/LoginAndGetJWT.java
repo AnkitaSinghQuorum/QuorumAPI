@@ -17,7 +17,7 @@ public class LoginAndGetJWT extends LoginEndpoint {
 
     public String generateAccessTokenP2P() throws IOException, ParseException {
 
-      response = requestSpecification().when().post(b.resourceLoginAndGetJWT).then().spec(responseSpecification()).extract().response();
+      response = requestSpecification().when().post(b.resourceLoginAndGetJWT).then().spec(responseSpecificationForStatusCode()).extract().response();
       log.info("Access Token for P2P generated successfully.");
 
 

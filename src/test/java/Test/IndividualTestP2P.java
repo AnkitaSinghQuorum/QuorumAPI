@@ -34,7 +34,7 @@ public class IndividualTestP2P extends IndividualEndpointP2P {
 
         response = given().spec(requestSpecification()).header("Authorization","Bearer " + bearerToken)
                 .when().get(b.resourceGetIndividuals)
-                .then().spec(responseSpecification()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
         log.info("Request hit successfully and response is received.");
 
         log.info(getJsonPath(response,"Id"));

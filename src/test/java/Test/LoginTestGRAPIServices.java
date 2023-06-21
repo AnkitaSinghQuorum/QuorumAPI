@@ -15,16 +15,24 @@ public class LoginTestGRAPIServices extends LoginEndpoint {
     Response response;
     BaseEndpoint b = new BaseEndpoint();
 
-    public String generateAccessTokenGRAPIServices() throws IOException, ParseException {
+    public String generateAccessTokenGRAPIServices() {
 
-        response = requestSpecificationForGRAPIServices().when().post(b.resourceLoginAndGetJWT).then().spec(responseSpecification()).extract().response();
-        log.info("Access Token for GRAPIServices generated successfully.");
+        String accessTokenGRAPIServices = null;
+        try {
+            response = requestSpecificationForGRAPIServices().when().post(b.resourceLoginAndGetJWT).then().spec(responseSpecificationForStatusCode()).extract().response();
+            log.info("Access Token for GRAPIServices generated successfully.");
 
 
-        String accessTokenGRAPIServices = getJsonPath(response, "access_token");
+            accessTokenGRAPIServices = getJsonPath(response, "access_token");
 
-        log.info("Access Token for GRAPIServices is "+ accessTokenGRAPIServices);
+            log.info("Access Token for GRAPIServices is " + accessTokenGRAPIServices);
+        }catch (Exception e) {
+            System.out.println("VPN should be connected.." + e.getMessage());
+            log.error("VPN should be connected..");
+        }
+
         return accessTokenGRAPIServices;
+
 
     }
 

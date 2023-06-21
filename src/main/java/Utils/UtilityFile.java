@@ -13,6 +13,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static org.hamcrest.Matchers.*;
+
 
 //import org.slf4j.Logger;
 
@@ -46,9 +48,26 @@ public class UtilityFile {
         return js.getInt(key);
     }
 
-    public ResponseSpecification responseSpecification() throws IOException{
+    public ResponseSpecification responseSpecificationForStatusCode() throws IOException{
 
         res = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
+        return res;
+    }
+
+    public ResponseSpecification responseSpecificationForPACID() throws IOException{
+
+         res = new ResponseSpecBuilder().expectBody("PACID",notNullValue()).build();
+         return res;
+    }
+    public ResponseSpecification responseSpecificationForPACAccountID() throws IOException{
+
+        res = new ResponseSpecBuilder().expectBody("PACAccountID",notNullValue()).build();
+        return res;
+    }
+
+    public ResponseSpecification responseSpecificationForOrganizationID() throws IOException{
+
+      res = new ResponseSpecBuilder().expectBody("OrganizationID",notNullValue()).build();
         return res;
     }
 }

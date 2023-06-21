@@ -30,8 +30,8 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     public void getListOfPACs() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .when().get(b.resourceGetListOfPacs)
-                .then().spec(responseSpecification()).extract().response();
+                .when().get(b.resourceGetListOfPACs)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting list of PACs.");
 
@@ -46,11 +46,11 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getSinglePAC() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\GetSinglePAC.json","PACID");
+        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePAC.json","PACID");
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .when().get(b.resourceGetSinglePac+id)
-                .then().spec(responseSpecification()).extract().response();
+                .when().get(b.resourceGetSinglePAC+id)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting a single PAC.");
 
@@ -66,9 +66,9 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     public void addNewPACCPAC() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\AddNewPACCPAC.json")))
+                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCPAC.json")))
                 .when().post(b.resourceAddNewPACCPAC)
-                .then().spec(responseSpecification()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForPACID()).extract().response();
 
         log.info("Request hit successfully and response is received for adding new PACC PAC.");
         log.info("The added PAC ID is " + getJsonPath(response, "PACID"));
@@ -83,9 +83,9 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     public void updatePACCPAC() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\UpdatePACCPAC.json")))
+                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACCPAC.json")))
                 .when().patch(b.resourceUpdatePACCPAC)
-                .then().spec(responseSpecification()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating PACC PAC.");
         log.info("The updated PAC ID is " + getJsonPath(response, "PACID"));
@@ -100,9 +100,9 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     public void deletePACCPAC() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\DeletePACCPAC.json")))
+                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCPAC.json")))
                 .when().post(b.resourceDeletePACCPAC)
-                .then().spec(responseSpecification()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for deleting PACC PAC.");
         log.info("The deleted PAC ID is " + getJsonPath(response, "PACID"));

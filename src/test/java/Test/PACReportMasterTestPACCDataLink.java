@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import static io.restassured.RestAssured.given;
 
-public class CompanyTestPACCDataLink extends PACCDataLinkEndpoint {
+public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
 
     private static Logger log = UtilityFile.getLogger(UtilityFile.class);
     LoginTestGRAPIServices login = new LoginTestGRAPIServices();
@@ -21,29 +21,23 @@ public class CompanyTestPACCDataLink extends PACCDataLinkEndpoint {
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
 
-    public CompanyTestPACCDataLink() throws IOException, ParseException {
+    public PACReportMasterTestPACCDataLink() throws IOException, ParseException {
     }
 
     @Test(groups ={"PACCDataLink"})
-    public void getPACCCompany() throws IOException, ParseException {
+    public void getListOfPACReportMasterRecords() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .when().get(b.resourceGetCompany)
+                .when().get(b.resourceGetListOfPACReportMasterRecords)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
-
-        log.info("Request hit successfully and response is received for get PACC company.");
+        log.info("Request hit successfully and response is received for getting list of PACReportMaster Records.");
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
 
-        log.info("CompanyID extracted from response is "+ getJsonPath(response, "CompanyID"));
+        log.info("PACReportMaster IDs extracted from response are "+ getJsonPath(response, "PACReportMasterID"));
 
         log.info("Status code is " + response.getStatusCode());
     }
-
-//    @Test(groups ={"PACCDataLink"})
-//    public void addNewPACCCompany(){
-//
-//    }
 }

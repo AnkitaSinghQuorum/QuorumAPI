@@ -31,7 +31,7 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetPACCOrganizations)
-                .then().spec(responseSpecification()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for get PACC organization.");
 
@@ -47,9 +47,9 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     public void addNewPACCOrganization() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\AddNewPACCOrganization.json")))
+                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCOrganization.json")))
                 .when().post(b.resourceAddNewPACCOrganization)
-                .then().spec(responseSpecification()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForOrganizationID()).extract().response();
 
         log.info("Request hit successfully and response is received for adding new PACC organization.");
         log.info("The added Organization Id is " + getJsonPath(response, "OrganizationID"));
@@ -64,9 +64,9 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     public void updatePACCOrganization() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\UpdatePACCOrganization.json")))
+                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACCOrganization.json")))
                 .when().patch(b.resourceUpdatePACCOrganization)
-                .then().spec(responseSpecification()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating PACC organization.");
         log.info("The updated Organization Id is " + getJsonPath(response, "OrganizationID"));
@@ -81,9 +81,9 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     public void deletePACCOrganization() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get("D:\\Ankita\\Quorum Prod Dev\\QuorumAPI\\src\\test\\resources\\JsonData\\DeletePACCOrganization.json")))
+                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCOrganization.json")))
                 .when().post(b.resourceDeletePACCOrganization)
-                .then().spec(responseSpecification()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for deleting PACC organization.");
         log.info("The deleted Organization Id is " + getJsonPath(response, "OrganizationID"));

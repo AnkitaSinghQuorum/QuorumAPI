@@ -12,8 +12,11 @@
         </groups>
             <classes>
                <class name="Test.CompanyTestPACCDataLink"/>
-                <class name="Test.OrganizationTestPACCDataLink"/>
-                     <class name="Test.PACTestPACCDataLink"></class>
+               <class name="Test.OrganizationTestPACCDataLink"/>
+               <class name="Test.PACTestPACCDataLink"></class>
+               <class name="Test.PACAccountTestPACCDataLink"></class>
+                <class name="Test.PACReportMasterTestPACCDataLink"></class>
+
 <!--                <class name="Test.IndividualTestP2P"/>-->
 
         </classes>
