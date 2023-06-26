@@ -70,4 +70,10 @@ public class UtilityFile {
       res = new ResponseSpecBuilder().expectBody("OrganizationID",notNullValue()).build();
         return res;
     }
+
+    public ResponseSpecification responseSpecificationForUserAccountID() throws IOException{
+
+        res = new ResponseSpecBuilder().expectBody("UserAccountID",notNullValue()).build();
+        return res;
+    }
 }

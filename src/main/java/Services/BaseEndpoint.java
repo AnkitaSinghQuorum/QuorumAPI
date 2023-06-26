@@ -43,6 +43,11 @@ public class BaseEndpoint {
     public String resourceGetListOfPACReportMasterRecords = "/api/pacreportmaster/pac/getall";
     public String resourceGetSinglePACReportMasterInstance = "/api/pacreportmaster/pac/get/{id}";
 
+    // GRAPIServices.PACCDataLink userAccount
+    public String resourceGetListOfUserAccounts = "/api/datalink/useraccount/get";
+    public String resourceAddNewUserAccount = "/api/datalink/useraccount/add";
+    public String resourceDeleteUserAccount = "/api/datalink/useraccount/delete";
+
 
 }
 
