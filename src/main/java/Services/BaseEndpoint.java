@@ -49,5 +49,8 @@ public class BaseEndpoint {
     public String resourceDeleteUserAccount = "/api/datalink/useraccount/delete";
 
 
+    public String resourceGetListOfPACOrgs = "/api/datalink/pacorganization/getall";
+    public String resourceAddNewPACOrgs =  "/api/datalink/pacorganization/add";
+    public String resourceGetSinglePACOrgs = "/api/datalink/pacorganization/get";
 }
 

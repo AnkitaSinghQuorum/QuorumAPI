@@ -76,4 +76,10 @@ public class UtilityFile {
         res = new ResponseSpecBuilder().expectBody("UserAccountID",notNullValue()).build();
         return res;
     }
+
+    public ResponseSpecification responseSpecificationForPACOrgsID() {
+
+        res = new ResponseSpecBuilder().expectBody("PACOrganizationID",notNullValue()).build();
+        return res;
+    }
 }

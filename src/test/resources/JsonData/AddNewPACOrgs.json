@@ -1,0 +1,38 @@
+[
+  {
+    "PACOrganizationID": 1231470,
+    "OrganizationName": "Bank For Arkansas",
+    "AddressLine1": "400 S CONNARD ST",
+    "AddressLine2": "",
+    "City": "DERMOTT",
+    "State": "AR",
+    "Zip": "71638",
+    "Phone": "414-458-789",
+    "SortName": "Bank For Arkansas",
+    "PACLimitType": "BNK",
+    "LimitAmount": 0,
+    "PreferredDeliveryType": "L",
+    "HasEmail": false,
+    "HasFax": false,
+    "IncludeInCorrespondence": false,
+    "CompanyID": 131101,
+    "Version": 0,
+    "CombinedSortName": "AR-BNK",
+    "IsActive": true,
+    "ReIndex": false,
+    "IsMarylandCaucusComm": false,
+    "PACAccountCollection": [
+      {
+        "PACAccountID": 0,
+        "EntityID": 0,
+        "PACID": 0,
+        "PACPercentage": 0,
+        "CompanyID": 0,
+        "Version": 0,
+        "PACReceivedCountYTD": 0,
+        "PACReceivedCountLYTD": 0
+      }
+    ]
+  }
+]
+
