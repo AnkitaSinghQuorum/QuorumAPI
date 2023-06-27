@@ -24,6 +24,7 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
     String addPACOrgsJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACOrgs.json";
     int pacOrgsID = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACOrgs.json","PACOrganizationID");
+    String updatePACOrgsJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACOrgs.json";
 
 
     public PACOrganizationTestPACCDataLink() throws IOException, ParseException {
@@ -79,5 +80,22 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
 //
 //        log.info("Status code is " + response.getStatusCode());
 //    }
+
+    @Test()
+    public void updatePACOrgs() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .body(Files.readAllBytes(Paths.get(updatePACOrgsJson)))
+                .when().patch(b.resourceUpdatePACOrgs)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
+
+        log.info("Request hit successfully and response is received for updating PACC PAC.");
+        log.info("The updated PAC ID is " + getJsonPath(response, "PACOrganizationID"));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
 
 }

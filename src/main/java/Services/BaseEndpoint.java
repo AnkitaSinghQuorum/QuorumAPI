@@ -1,5 +1,7 @@
 package Services;
 
+import java.net.URI;
+
 public class BaseEndpoint {
 
     //for individual get, update, delete, post url
@@ -47,10 +49,13 @@ public class BaseEndpoint {
     public String resourceGetListOfUserAccounts = "/api/datalink/useraccount/get";
     public String resourceAddNewUserAccount = "/api/datalink/useraccount/add";
     public String resourceDeleteUserAccount = "/api/datalink/useraccount/delete";
+    public String resourceUpdateUserAccount = "/api/datalink/useraccount/update";
+
 
 
     public String resourceGetListOfPACOrgs = "/api/datalink/pacorganization/getall";
     public String resourceAddNewPACOrgs =  "/api/datalink/pacorganization/add";
     public String resourceGetSinglePACOrgs = "/api/datalink/pacorganization/get";
+    public String resourceUpdatePACOrgs = "/api/datalink/pacorganization/edit";
 }
 
