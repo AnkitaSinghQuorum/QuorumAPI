@@ -1,6 +1,5 @@
-[
-  {
-    "PACOrganizationID": 1231470,
+{
+    "PACOrganizationID": 0,
     "OrganizationName": "Bank For Arkansas",
     "AddressLine1": "400 S CONNARD ST",
     "AddressLine2": "",
@@ -20,19 +19,5 @@
     "CombinedSortName": "AR-BNK",
     "IsActive": true,
     "ReIndex": false,
-    "IsMarylandCaucusComm": false,
-    "PACAccountCollection": [
-      {
-        "PACAccountID": 0,
-        "EntityID": 0,
-        "PACID": 0,
-        "PACPercentage": 0,
-        "CompanyID": 0,
-        "Version": 0,
-        "PACReceivedCountYTD": 0,
-        "PACReceivedCountLYTD": 0
-      }
-    ]
+    "IsMarylandCaucusComm": false
   }
-]
-

@@ -64,24 +64,24 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
-//  @Test()
-//    public void addNewPACOrgs() throws IOException, ParseException {
-//
-//        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-//                .body(Files.readAllBytes(Paths.get(addPACOrgsJson)))
-//                .when().post(b.resourceAddNewPACOrgs)
-//                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForPACOrgsID()).extract().response();
-//
-//        log.info("Request hit successfully and response is received for adding new PAC Orgs.");
-//        log.info("The added PAC Organization ID is " + getJsonPath(response, "PACOrganizationID"));
-//
-//        log.info(response.asPrettyString());
-//        log.info("Response json converted to String successfully.");
-//
-//        log.info("Status code is " + response.getStatusCode());
-//    }
+  @Test()
+    public void addNewPACOrgs() throws IOException, ParseException {
 
-    @Test()
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .body(Files.readAllBytes(Paths.get(addPACOrgsJson)))
+                .when().post(b.resourceAddNewPACOrgs)
+                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForPACOrgsID()).extract().response();
+
+        log.info("Request hit successfully and response is received for adding new PAC Orgs.");
+        log.info("The added PAC Organization ID is " + getJsonPath(response, "PACOrganizationID"));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
+//    @Test()
     public void updatePACOrgs() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
