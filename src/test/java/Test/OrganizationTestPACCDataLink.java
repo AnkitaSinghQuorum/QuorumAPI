@@ -20,6 +20,7 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     LoginTestGRAPIServices login = new LoginTestGRAPIServices();
     BaseEndpoint b = new BaseEndpoint();
     Response response;
+    String OrganizationID="OrganizationID";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
 
@@ -34,11 +35,10 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for get PACC organization.");
+        log.info("Organization IDs extracted from response are "+ getJsonPath(response, "OrganizationID"));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
-
-        log.info("Organization IDs extracted from response are "+ getJsonPath(response, "OrganizationID"));
 
         log.info("Status code is " + response.getStatusCode());
     }
@@ -49,7 +49,7 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCOrganization.json")))
                 .when().post(b.resourceAddNewPACCOrganization)
-                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForOrganizationID()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(OrganizationID)).extract().response();
 
         log.info("Request hit successfully and response is received for adding new PACC organization.");
         log.info("The added Organization Id is " + getJsonPath(response, "OrganizationID"));

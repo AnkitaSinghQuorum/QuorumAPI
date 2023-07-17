@@ -40,8 +40,10 @@ public class BaseEndpoint {
     public String resourceUpdatePACAccount = "/api/datalink/pacaccount/edit";
 
     // GRAPIServices.PACCDataLink PACReportMaster
-    public String resourceGetListOfPACReportMasterRecords = "/api/pacreportmaster/pac/getall";
-    public String resourceGetSinglePACReportMasterInstance = "/api/pacreportmaster/pac/get/{id}";
+    public String resourceGetListOfPACReportMasterRecords = "/api/datalink/pacreportmaster/getall";
+    public String resourceGetSinglePACReport = "/api/datalink/pacreportmaster/get/";
+    public String resourceEditSinglePACReport = "/api/datalink/pacreportmaster/edit/";
+    public String resourceAddNewPACCPACReport = "/api/datalink/pacreportmaster/add";
 
 
 }
