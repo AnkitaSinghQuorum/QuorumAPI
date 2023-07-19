@@ -33,6 +33,7 @@ public class PACCDataLinkEndpoint extends UtilityFile {
             req = new RequestSpecBuilder().setBaseUri(b.basePACCDataLinkUrl).setContentType(ContentType.JSON).build();
             req = given().spec(requestSpecification()).header("CompanyID", l_gr.getCompanyID());
             log.info("Request Specification ran successfully.");
+
             return req;
         }
         return req;
