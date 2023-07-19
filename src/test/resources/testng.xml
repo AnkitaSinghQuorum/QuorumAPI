@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="D:/QuorumAPI/src/test/java/Test">
+<suite name="All Test Suite"  >
+    <test verbose="2" preserve-order="true" name="D:/QuorumAPI/src/test/java/Test"  >
 
+        <groups>
+            <run>
+                <include name = "PACCDataLink"/>
+<!--                <include name = "P2P"/>-->
+
+            </run>
+        </groups>
             <classes>
-                <class name="Test.IndividualTest"/>
+<!--               <class name="Test.CompanyTestPACCDataLink"/>-->
+<!--               <class name="Test.OrganizationTestPACCDataLink"/>-->
+<!--               <class name="Test.PACTestPACCDataLink"></class>-->
+<!--               <class name="Test.PACAccountTestPACCDataLink"></class>-->
+                <class name="Test.PACReportMasterTestPACCDataLink"></class>
+
+<!--                <class name="Test.IndividualTestP2P"/>-->
+
         </classes>
+<!--        <classes><class name="Test.OrganizationTestPACCDataLink"></class></classes>-->
     </test>
 </suite>
