@@ -20,7 +20,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     LoginTestGRAPIServices login = new LoginTestGRAPIServices();
     BaseEndpoint b = new BaseEndpoint();
     Response response;
-    String PACID = "PACID";
+    String pacID = "PACID";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
 
@@ -35,7 +35,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting list of PACs.");
-        log.info("PAC IDs extracted from response are "+ getJsonPath(response, "PACID"));
+        log.info("PAC IDs extracted from response are "+ getJsonPath(response, pacID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -46,14 +46,14 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getSinglePAC() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePAC.json","PACID");
+        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePAC.json",pacID);
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetSinglePAC+id)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting a single PAC.");
-        log.info("PAC ID extracted from response is "+ getJsonPath(response, "PACID"));
+        log.info("PAC ID extracted from response is "+ getJsonPath(response, pacID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -67,10 +67,10 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCPAC.json")))
                 .when().post(b.resourceAddNewPACCPAC)
-                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(PACID)).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(pacID)).extract().response();
 
         log.info("Request hit successfully and response is received for adding new PACC PAC.");
-        log.info("The added PAC ID is " + getJsonPath(response, "PACID"));
+        log.info("The added PAC ID is " + getJsonPath(response, pacID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -87,7 +87,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating PACC PAC.");
-        log.info("The updated PAC ID is " + getJsonPath(response, "PACID"));
+        log.info("The updated PAC ID is " + getJsonPath(response, pacID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -104,7 +104,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for deleting PACC PAC.");
-        log.info("The deleted PAC ID is " + getJsonPath(response, "PACID"));
+        log.info("The deleted PAC ID is " + getJsonPath(response, pacID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");

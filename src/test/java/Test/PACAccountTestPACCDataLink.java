@@ -21,7 +21,7 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     LoginTestGRAPIServices login = new LoginTestGRAPIServices();
     BaseEndpoint b = new BaseEndpoint();
     Response response;
-    String PACAccountID = "PACAccountID";
+    String pacAccountID = "PACAccountID";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
 
@@ -36,7 +36,7 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting list of PAC Accounts.");
-        log.info("PAC Account IDs extracted from response are "+ getJsonPath(response, "PACAccountID"));
+        log.info("PAC Account IDs extracted from response are "+ getJsonPath(response, pacAccountID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -54,7 +54,7 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting a single PAC Account.");
-        log.info("PAC Account ID extracted from response is "+ getJsonPath(response, "PACAccountID"));
+        log.info("PAC Account ID extracted from response is "+ getJsonPath(response, pacAccountID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -68,10 +68,10 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/AddSinglePACAccount.json")))
                 .when().post(b.resourceAddSinglePACAccount)
-                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(PACAccountID)).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(pacAccountID)).extract().response();
 
         log.info("Request hit successfully and response is received for adding single PAC Account.");
-        log.info("The added PAC Account ID is " + getJsonPath(response, "PACAccountID"));
+        log.info("The added PAC Account ID is " + getJsonPath(response, pacAccountID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -88,7 +88,7 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating PACCAccount.");
-        log.info("The updated PACAccount ID is " + getJsonPath(response, "PACAccountID"));
+        log.info("The updated PACAccount ID is " + getJsonPath(response, pacAccountID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
