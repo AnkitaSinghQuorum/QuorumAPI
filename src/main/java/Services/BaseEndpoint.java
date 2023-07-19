@@ -52,10 +52,13 @@ public class BaseEndpoint {
     public String resourceUpdateUserAccount = "/api/datalink/useraccount/update";
 
 
-
+    // GRAPIServices.PACCDataLink PAC Organizations
     public String resourceGetListOfPACOrgs = "/api/datalink/pacorganization/getall";
     public String resourceAddNewPACOrgs =  "/api/datalink/pacorganization/add";
     public String resourceGetSinglePACOrgs = "/api/datalink/pacorganization/get";
     public String resourceUpdatePACOrgs = "/api/datalink/pacorganization/edit";
+
+    // GRAPIServices.PACCDataLink StateReportJob
+    public String resourceGetJobStatusByJobActionID = "/api/statereport/getjobstatus/";
 }
 
