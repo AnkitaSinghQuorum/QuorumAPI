@@ -1,5 +1,5 @@
 {
-  "PACID": 1947,
+  "PACID": 1952,
   "PACExternalID": null,
   "Juris": "MD",
   "IsHoldingPAC": false,
@@ -30,7 +30,7 @@
   "IsHasSource": false,
   "IsHasGLAccounts": false,
   "DefaultPledgePaymentMethod": null,
-  "CompanyID": 131101,
+  "CompanyID": 142973,
   "Version": 0,
   "IsNegativeBalanceAllowed": false,
   "AlternateAddressLine1": null,
