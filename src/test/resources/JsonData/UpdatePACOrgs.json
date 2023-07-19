@@ -1,0 +1,36 @@
+
+{
+  "PACOrganizationID": 61841,
+  "OrganizationName": "New Bank Franklin",
+  "AddressLine1": "",
+  "AddressLine2": "",
+  "City": "Franklin",
+  "State": "NC",
+  "Zip": "28734",
+  "Phone": "",
+  "SortName": "New Test PAC Org",
+  "PACLimitType": "BNK",
+  "LimitAmount": 0,
+  "PreferredDeliveryType": "L",
+  "HasEmail": false,
+  "HasFax": false,
+  "IncludeInCorrespondence": false,
+  "CompanyID": 131101,
+  "Version": 0,
+  "CombinedSortName": "BA-NCUtilityDN",
+  "IsActive": true,
+  "ReIndex": false,
+  "IsMarylandCaucusComm": false,
+  "PACAccountCollection": [
+    {
+      "PACAccountID": 0,
+      "EntityID": 0,
+      "PACID": 0,
+      "PACPercentage": 0,
+      "CompanyID": 0,
+      "Version": 0,
+      "PACReceivedCountYTD": 0,
+      "PACReceivedCountLYTD": 0
+    }
+  ]
+}

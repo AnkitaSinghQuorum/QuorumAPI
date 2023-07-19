@@ -22,7 +22,7 @@ import static org.hamcrest.Matchers.*;
 
 public class UtilityFile {
     public static ResponseSpecification res;
-   private static boolean root = false;
+    private static boolean root = false;
 
 
     private static Logger log = UtilityFile.getLogger(UtilityFile.class);
