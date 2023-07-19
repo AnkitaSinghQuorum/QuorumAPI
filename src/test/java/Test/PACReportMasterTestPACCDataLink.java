@@ -29,7 +29,7 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     LoginTestGRAPIServices login = new LoginTestGRAPIServices();
     BaseEndpoint b = new BaseEndpoint();
     Response response;
-    String PACReportMasterID ="PACReportMasterID";
+    String pacReportMasterID ="PACReportMasterID";
     String pathForJsonPatch ="/src/test/resources/JsonData/EditSinglePACReport.json";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
@@ -45,7 +45,7 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting list of PACReportMaster Records.");
-        log.info("PACReportMaster IDs extracted from response are "+ getJsonPath(response, "PACReportMasterID"));
+        log.info("PACReportMaster IDs extracted from response are "+ getJsonPath(response, pacReportMasterID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -56,14 +56,14 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getSinglePACReport() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACReport.json","PACReportMasterID");
+        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACReport.json",pacReportMasterID);
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetSinglePACReport+id)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting a single PAC Report.");
-        log.info("PACReportMaster ID extracted from response is "+ getJsonPath(response, "PACReportMasterID"));
+        log.info("PACReportMaster ID extracted from response is "+ getJsonPath(response, pacReportMasterID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -74,7 +74,7 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void editSinglePACReport() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/EditSinglePACReport.json","PACReportMasterID");
+        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/EditSinglePACReport.json",pacReportMasterID);
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(extractJsonToBePatched(pathForJsonPatch))
@@ -82,7 +82,7 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating single PAC Report.");
-        log.info("The updated PACReportMasterID is " + getJsonPath(response, "PACReportMasterID"));
+        log.info("The updated PACReportMasterID is " + getJsonPath(response, pacReportMasterID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -96,10 +96,10 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCPACReport.json")))
                 .when().post(b.resourceAddNewPACCPACReport)
-                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(PACReportMasterID)).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(pacReportMasterID)).extract().response();
 
         log.info("Request hit successfully and response is received for adding new PACC PACReport.");
-        log.info("The added PACReportMasterID is " + getJsonPath(response, "PACReportMasterID"));
+        log.info("The added PACReportMasterID is " + getJsonPath(response, pacReportMasterID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");

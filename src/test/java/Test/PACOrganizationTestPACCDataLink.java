@@ -25,6 +25,7 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     String addPACOrgsJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACOrgs.json";
     int pacOrgsID = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACOrgs.json","PACOrganizationID");
     String updatePACOrgsJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACOrgs.json";
+    String pacOrganizationID = "PACOrganizationID";
 
 
     public PACOrganizationTestPACCDataLink() throws IOException, ParseException {
@@ -35,7 +36,7 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetListOfPACOrgs)
-                .then().spec(responseSpecificationForPACOrgsID()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting list of PAC Orgs.");
 
@@ -59,7 +60,7 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
 
-        log.info("PAC Organization ID extracted from response is "+ getJsonPath(response, "PACOrganizationID"));
+        log.info("PAC Organization ID extracted from response is "+ getJsonPath(response, pacOrganizationID));
 
         log.info("Status code is " + response.getStatusCode());
     }
@@ -67,13 +68,13 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
   @Test()
     public void addNewPACOrgs() throws IOException, ParseException {
 
-        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+      response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(Files.readAllBytes(Paths.get(addPACOrgsJson)))
                 .when().post(b.resourceAddNewPACOrgs)
-                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForPACOrgsID()).extract().response();
+                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(pacOrganizationID)).extract().response();
 
         log.info("Request hit successfully and response is received for adding new PAC Orgs.");
-        log.info("The added PAC Organization ID is " + getJsonPath(response, "PACOrganizationID"));
+        log.info("The added PAC Organization ID is " + getJsonPath(response, pacOrganizationID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
@@ -90,7 +91,7 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating PACC PAC.");
-        log.info("The updated PAC ID is " + getJsonPath(response, "PACOrganizationID"));
+        log.info("The updated PAC ID is " + getJsonPath(response, pacOrganizationID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");

@@ -1,5 +1,6 @@
 package Utils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import static org.hamcrest.Matchers.*;
 
@@ -20,7 +22,7 @@ import static org.hamcrest.Matchers.*;
 
 public class UtilityFile {
     public static ResponseSpecification res;
-   private static boolean root = false;
+    private static boolean root = false;
 
 
     private static Logger log = UtilityFile.getLogger(UtilityFile.class);
@@ -48,38 +50,29 @@ public class UtilityFile {
         return js.getInt(key);
     }
 
+    public String extractJsonToBePatched(String path) throws IOException {
+
+        JsonPath js = new JsonPath((Files.readString(Paths.get(System.getProperty("user.dir") + path))));
+
+        List<String> patchJsonAsList = js.getList("patch");
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String patchJson = objectMapper.writeValueAsString(patchJsonAsList);
+        log.info("The json to be patched is "+patchJson);
+        return patchJson;
+
+    }
+
     public ResponseSpecification responseSpecificationForStatusCode() throws IOException{
 
         res = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
         return res;
     }
 
-    public ResponseSpecification responseSpecificationForPACID() throws IOException{
+    public ResponseSpecification responseSpecificationForID(String ID) throws IOException{
 
-         res = new ResponseSpecBuilder().expectBody("PACID",notNullValue()).build();
-         return res;
-    }
-    public ResponseSpecification responseSpecificationForPACAccountID() throws IOException{
-
-        res = new ResponseSpecBuilder().expectBody("PACAccountID",notNullValue()).build();
+        res = new ResponseSpecBuilder().expectBody(ID,notNullValue()).build();
         return res;
     }
 
-    public ResponseSpecification responseSpecificationForOrganizationID() throws IOException{
-
-      res = new ResponseSpecBuilder().expectBody("OrganizationID",notNullValue()).build();
-        return res;
-    }
-
-    public ResponseSpecification responseSpecificationForUserAccountID() throws IOException{
-
-        res = new ResponseSpecBuilder().expectBody("UserAccountID",notNullValue()).build();
-        return res;
-    }
-
-    public ResponseSpecification responseSpecificationForPACOrgsID() {
-
-        res = new ResponseSpecBuilder().expectBody("PACOrganizationID",notNullValue()).build();
-        return res;
-    }
 }
