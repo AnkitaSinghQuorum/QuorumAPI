@@ -31,7 +31,7 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     public PACOrganizationTestPACCDataLink() throws IOException, ParseException {
     }
 
-    //@Test()
+    @Test(groups ={"PACCDataLink"})
     public void getListOfAllPACOrgs() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
@@ -48,7 +48,7 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
-//    @Test()
+    @Test(groups ={"PACCDataLink"})
     public void getPACOrgsByID() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
@@ -65,7 +65,7 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
-  @Test()
+    @Test(groups ={"PACCDataLink"})
     public void addNewPACOrgs() throws IOException, ParseException {
 
       response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
@@ -82,7 +82,7 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
-//    @Test()
+    @Test(groups ={"PACCDataLink"})
     public void updatePACOrgs() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)

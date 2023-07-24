@@ -30,7 +30,7 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     public UserAccountTestPACCDataLink() throws IOException, ParseException {
     }
 
-    //@Test()
+    @Test(groups ={"PACCDataLink"})
     public void getListOfAllUserAccounts() throws IOException, ParseException {
 
 
@@ -48,7 +48,7 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
- //  @Test()
+    @Test(groups ={"PACCDataLink"})
     public void addNewUserAccounts() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
@@ -65,7 +65,7 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
-//    @Test()
+    @Test(groups ={"PACCDataLink"})
     public void deleteUserAccounts() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
@@ -82,7 +82,7 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
-    @Test()
+    @Test(groups ={"PACCDataLink"})
     public void updatePACCPAC() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)

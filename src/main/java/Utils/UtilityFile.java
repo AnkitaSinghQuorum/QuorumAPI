@@ -52,7 +52,7 @@ public class UtilityFile {
 
     public String extractJsonToBePatched(String path) throws IOException {
 
-        JsonPath js = new JsonPath((Files.readString(Paths.get(System.getProperty("user.dir") + path))));
+        JsonPath js = new JsonPath((Files.readString(Paths.get(path))));
 
         List<String> patchJsonAsList = js.getList("patch");
 

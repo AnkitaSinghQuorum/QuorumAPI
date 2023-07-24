@@ -24,7 +24,7 @@ public class StateReportJobTestPACCDataLink extends PACCDataLinkEndpoint {
     public StateReportJobTestPACCDataLink() throws IOException, ParseException {
     }
 
-    @Test()
+    @Test(groups ={"PACCDataLink"})
     public void getJobStatusByJobActionID() throws IOException, ParseException {
 
 
