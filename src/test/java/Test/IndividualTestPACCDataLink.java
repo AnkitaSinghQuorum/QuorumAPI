@@ -9,6 +9,8 @@ import org.json.simple.parser.ParseException;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static io.restassured.RestAssured.given;
 
@@ -20,6 +22,8 @@ public class IndividualTestPACCDataLink extends PACCDataLinkEndpoint {
     Response response;
     String individualId = "IndividualId";
     String getSingleIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSingleIndividual.json";
+    String addIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddIndividual.json";
+    String updateSingleIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdateSingleIndividual.json";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
 
@@ -53,6 +57,42 @@ public class IndividualTestPACCDataLink extends PACCDataLinkEndpoint {
 
         log.info("Request hit successfully and response is received for getting a single individual.");
         log.info("Individual  Id extracted from response is "+ getJsonPath(response, individualId));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
+    @Test(groups ={"PACCDataLink"})
+    public void addIndividual() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .body(Files.readAllBytes(Paths.get(addIndividualJson)))
+                .when().post(b.resourceAddIndividual)
+                .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(individualId)).extract().response();
+
+        log.info("Request hit successfully and response is received for adding individual.");
+        log.info("The added Individual ID is " + getJsonPath(response, individualId));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
+    @Test(groups ={"PACCDataLink1"})
+    public void updateSingleIndividual() throws IOException, ParseException {
+
+        int id = getQueryParamFromJsonFile(updateSingleIndividualJson,individualId);
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .body(extractJsonToBePatched(updateSingleIndividualJson))
+                .when().patch(b.resourceUpdateSingleIndividual+id)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
+
+        log.info("Request hit successfully and response is received for updating single individual.");
+        log.info("The updated Individual ID is " + getJsonPath(response, individualId));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
