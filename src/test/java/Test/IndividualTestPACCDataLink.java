@@ -81,7 +81,7 @@ public class IndividualTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
-    @Test(groups ={"PACCDataLink1"})
+    @Test(groups ={"PACCDataLink"})
     public void updateSingleIndividual() throws IOException, ParseException {
 
         int id = getQueryParamFromJsonFile(updateSingleIndividualJson,individualId);
