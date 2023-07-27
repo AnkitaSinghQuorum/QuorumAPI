@@ -4,12 +4,12 @@
     {
       "op": "replace",
       "path": "/AlertMessage",
-      "value": "Test1"
+      "value": "Test2"
     },
     {
       "op": "replace",
       "path": "/Version",
-      "value": "1"
+      "value": "2"
     }
   ]
 }
