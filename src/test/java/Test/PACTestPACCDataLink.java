@@ -23,6 +23,10 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     String pacID = "PACID";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
+    String getSinglePACJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePAC.json";
+    String addNewPACCPACJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCPAC.json";
+    String updatePACCPACJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACCPAC.json";
+    String deletePACCPACJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCPAC.json";
 
     public PACTestPACCDataLink() throws IOException, ParseException {
     }
@@ -46,7 +50,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getSinglePAC() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePAC.json",pacID);
+        int id = getQueryParamFromJsonFile(getSinglePACJson,pacID);
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetSinglePAC+id)
@@ -65,7 +69,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     public void addNewPACCPAC() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCPAC.json")))
+                .body(Files.readAllBytes(Paths.get(addNewPACCPACJson)))
                 .when().post(b.resourceAddNewPACCPAC)
                 .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(pacID)).extract().response();
 
@@ -82,7 +86,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     public void updatePACCPAC() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACCPAC.json")))
+                .body(Files.readAllBytes(Paths.get(updatePACCPACJson)))
                 .when().patch(b.resourceUpdatePACCPAC)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
@@ -99,7 +103,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     public void deletePACCPAC() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCPAC.json")))
+                .body(Files.readAllBytes(Paths.get(deletePACCPACJson)))
                 .when().post(b.resourceDeletePACCPAC)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 

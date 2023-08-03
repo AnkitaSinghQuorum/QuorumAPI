@@ -62,5 +62,11 @@ public class BaseEndpoint {
 
     // GRAPIServices.PACCDataLink StateReportJob
     public String resourceGetJobStatusByJobActionID = "/api/statereport/getjobstatus/";
+
+    // GRAPIServices.PACCDataLink Individual
+    public String resourceGetListOfIndividualRecords = "/api/datalink/individual/getall";
+    public String resourceGetSingleIndividual = "/api/datalink/individual/get/";
+    public String resourceAddIndividual = "/api/datalink/individual/add";
+    public String resourceUpdateSingleIndividual = "/api/datalink/individual/edit/";
 }
 

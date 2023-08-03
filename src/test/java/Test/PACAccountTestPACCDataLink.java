@@ -24,6 +24,9 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     String pacAccountID = "PACAccountID";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
+    String getSinglePACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACAccount.json";
+    String addSinglePACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddSinglePACAccount.json";
+    String updatePACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACAccount.json";
 
     public PACAccountTestPACCDataLink() throws IOException, ParseException {
     }
@@ -47,7 +50,7 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getSinglePACAccount() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACAccount.json","PACAccountID");
+        int id = getQueryParamFromJsonFile(getSinglePACAccountJson,pacAccountID);
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetSinglePACAccount+id)
@@ -66,7 +69,7 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     public void addSinglePACAccount() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/AddSinglePACAccount.json")))
+                .body(Files.readAllBytes(Paths.get(addSinglePACAccountJson)))
                 .when().post(b.resourceAddSinglePACAccount)
                 .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(pacAccountID)).extract().response();
 
@@ -83,7 +86,7 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     public void updatePACAccount() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACAccount.json")))
+                .body(Files.readAllBytes(Paths.get(updatePACAccountJson)))
                 .when().post(b.resourceUpdatePACAccount)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 

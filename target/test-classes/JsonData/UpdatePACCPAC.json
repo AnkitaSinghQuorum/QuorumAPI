@@ -1,5 +1,5 @@
 {
-  "PACID": 1865,
+  "PACID": 1900,
   "Juris": "MD",
   "IsHoldingPAC": false,
   "IsAffiliated": false,
@@ -14,7 +14,7 @@
   "IsHasPledges": false,
   "IsHasSource": false,
   "IsHasGLAccounts": false,
-  "CompanyID": 131101,
+  "CompanyID": 142973,
   "Version": 0,
   "IsNegativeBalanceAllowed": false,
   "IsHasDues": false

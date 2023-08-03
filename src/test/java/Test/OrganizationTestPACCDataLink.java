@@ -23,6 +23,9 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     String organizationID = "OrganizationID";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
+    String addNewPACCOrganizationJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCOrganization.json";
+    String updatePACCOrganizationJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACCOrganization.json";
+    String deletePACCOrganizationJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCOrganization.json";
 
     public OrganizationTestPACCDataLink() throws IOException, ParseException {
     }
@@ -47,7 +50,7 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     public void addNewPACCOrganization() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCOrganization.json")))
+                .body(Files.readAllBytes(Paths.get(addNewPACCOrganizationJson)))
                 .when().post(b.resourceAddNewPACCOrganization)
                 .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(organizationID)).extract().response();
 
@@ -64,7 +67,7 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     public void updatePACCOrganization() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACCOrganization.json")))
+                .body(Files.readAllBytes(Paths.get(updatePACCOrganizationJson)))
                 .when().patch(b.resourceUpdatePACCOrganization)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
@@ -81,7 +84,7 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     public void deletePACCOrganization() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCOrganization.json")))
+                .body(Files.readAllBytes(Paths.get(deletePACCOrganizationJson)))
                 .when().post(b.resourceDeletePACCOrganization)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 

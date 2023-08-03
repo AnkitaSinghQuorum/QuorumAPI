@@ -30,9 +30,11 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     BaseEndpoint b = new BaseEndpoint();
     Response response;
     String pacReportMasterID ="PACReportMasterID";
-    String pathForJsonPatch ="/src/test/resources/JsonData/EditSinglePACReport.json";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
+    String getSinglePACReportJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACReport.json";
+    String editSinglePACReportJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/EditSinglePACReport.json";
+    String addNewPACCPACReportJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCPACReport.json";
 
     public PACReportMasterTestPACCDataLink() throws IOException, ParseException {
     }
@@ -56,7 +58,7 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getSinglePACReport() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACReport.json",pacReportMasterID);
+        int id = getQueryParamFromJsonFile(getSinglePACReportJson,pacReportMasterID);
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetSinglePACReport+id)
@@ -74,10 +76,10 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void editSinglePACReport() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(System.getProperty("user.dir") + "/src/test/resources/JsonData/EditSinglePACReport.json",pacReportMasterID);
+        int id = getQueryParamFromJsonFile(editSinglePACReportJson,pacReportMasterID);
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(extractJsonToBePatched(pathForJsonPatch))
+                .body(extractJsonToBePatched(editSinglePACReportJson))
                 .when().patch(b.resourceEditSinglePACReport+id)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
@@ -94,7 +96,7 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     public void addNewPACCPACReport() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCPACReport.json")))
+                .body(Files.readAllBytes(Paths.get(addNewPACCPACReportJson)))
                 .when().post(b.resourceAddNewPACCPACReport)
                 .then().spec(responseSpecificationForStatusCode()).spec(responseSpecificationForID(pacReportMasterID)).extract().response();
 
