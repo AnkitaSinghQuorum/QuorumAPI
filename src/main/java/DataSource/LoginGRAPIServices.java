@@ -13,6 +13,7 @@ public class LoginGRAPIServices {
     private String client_id;
     private String secret;
     private String companyId;
+    private String userAccountID;
     private JSONObject jsonObject;
     private String path;
     private Object obj;
@@ -53,6 +54,11 @@ public class LoginGRAPIServices {
     public String getCompanyID() {
         companyId = (String) jsonObject.get("CompanyID");
         return companyId;
+    }
+
+    public String getUserAccountID() {
+        userAccountID = (String) jsonObject.get("UserAccountID");
+        return userAccountID;
     }
 
 

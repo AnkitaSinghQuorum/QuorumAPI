@@ -18,8 +18,8 @@
 <!--                <class name="Test.PACReportMasterTestPACCDataLink"></class>-->
 <!--                <class name="Test.PACOrganizationTestPACCDataLink"></class>-->
 <!--                <class name="Test.StateReportJobTestPACCDataLink"></class>-->
-<!--                <class name="Test.UserAccountTestPACCDataLink"></class>-->
-                     <class name="Test.IndividualTestPACCDataLink"></class>
+                <class name="Test.UserAccountTestPACCDataLink"></class>
+<!--                     <class name="Test.IndividualTestPACCDataLink"></class>-->
 
 
 <!--                <class name="Test.IndividualTestP2P"/>-->

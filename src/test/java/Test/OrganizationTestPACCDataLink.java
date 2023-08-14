@@ -66,9 +66,11 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups = {"PACCDataLink"})
     public void updatePACCOrganization() throws IOException, ParseException {
 
+        int id = getQueryParamFromJsonFile(updatePACCOrganizationJson,organizationID);
+
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(updatePACCOrganizationJson)))
-                .when().patch(b.resourceUpdatePACCOrganization)
+                .body(extractJsonToBePatched(updatePACCOrganizationJson))
+                .when().patch(b.resourceUpdatePACCOrganization+id)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating PACC organization.");

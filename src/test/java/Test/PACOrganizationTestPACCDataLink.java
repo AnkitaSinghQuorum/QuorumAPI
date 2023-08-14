@@ -52,7 +52,7 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     public void getPACOrgsByID() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .when().get(b.resourceGetSinglePACOrgs+"?id="+pacOrgsID)
+                .when().get(b.resourceGetSinglePACOrgs+pacOrgsID)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting a single PAC Account.");
