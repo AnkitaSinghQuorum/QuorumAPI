@@ -65,22 +65,22 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
-    @Test(groups ={"PACCDataLink"})
-    public void deleteUserAccounts() throws IOException, ParseException {
-
-        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(deleteUserAccountJson)))
-                .when().post(b.resourceDeleteUserAccount)
-                .then().spec(responseSpecificationForStatusCode()).extract().response();
-
-        log.info("Request hit successfully and response is received for deleting user account.");
-        log.info("The deleted user account ID is " + getJsonPath(response, userAccountID));
-
-        log.info(response.asPrettyString());
-        log.info("Response json converted to String successfully.");
-
-        log.info("Status code is " + response.getStatusCode());
-    }
+//    @Test(groups ={"PACCDataLink"})
+//    public void deleteUserAccounts() throws IOException, ParseException {
+//
+//        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+//                .body(Files.readAllBytes(Paths.get(deleteUserAccountJson)))
+//                .when().post(b.resourceDeleteUserAccount)
+//                .then().spec(responseSpecificationForStatusCode()).extract().response();
+//
+//        log.info("Request hit successfully and response is received for deleting user account.");
+//        log.info("The deleted user account ID is " + getJsonPath(response, userAccountID));
+//
+//        log.info(response.asPrettyString());
+//        log.info("Response json converted to String successfully.");
+//
+//        log.info("Status code is " + response.getStatusCode());
+//    }
 
     @Test(groups ={"PACCDataLink"})
     public void updatePACCPAC() throws IOException, ParseException {

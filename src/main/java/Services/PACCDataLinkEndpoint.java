@@ -31,7 +31,7 @@ public class PACCDataLinkEndpoint extends UtilityFile {
         jsonObject = l_gr.getJsonObject();
         if(req==null){
             req = new RequestSpecBuilder().setBaseUri(b.basePACCDataLinkUrl).setContentType(ContentType.JSON).build();
-            req = given().spec(requestSpecification()).header("CompanyID", l_gr.getCompanyID());
+            req = given().spec(requestSpecification()).header("CompanyID", l_gr.getCompanyID()).header("UserAccountID", l_gr.getUserAccountID());
             log.info("Request Specification ran successfully.");
 
             return req;

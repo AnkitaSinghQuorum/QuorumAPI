@@ -1,5 +1,5 @@
 {
-  "PACReportMasterID": 70151,
+  "PACReportMasterID": 70506,
   "patch":[
     {
       "op": "replace",
@@ -9,7 +9,7 @@
     {
       "op": "replace",
       "path": "/Version",
-      "value": "530"
+      "value": "527"
     }
   ]
 }

@@ -1,22 +1,15 @@
 {
-  "OrganizationID": 387271,
-  "FullName": "DataLink Test Company",
-  "AddressLine1": "123 Main Street st",
-  "City": "Our Town",
-  "State": "MD",
-  "Zip": "20901",
-  "Phone": "1234567890",
-  "EMail": "wally@abc.com",
-  "PreferredDeliveryType": "E",
-  "HasFax": false,
-  "HasEMail": false,
-  "HasParent": false,
-  "IsParent": false,
-  "Version": 0,
-  "SplitPercentage": 0,
-  "CompanyID": 142973,
-  "ExternalID": "DataLink Test Company",
-  "IsEmployer": false,
-  "CreationDate": "0001-01-01T00:00:00",
-  "LastModifiedDate": "0001-01-01T00:00:00"
+  "OrganizationID": 387469,
+  "patch":[
+    {
+      "op": "replace",
+      "path": "/Phone",
+      "value": "0123456789"
+    },
+    {
+      "op": "replace",
+      "path": "/Version",
+      "value": "0"
+    }
+  ]
 }
