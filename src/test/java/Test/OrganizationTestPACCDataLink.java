@@ -27,6 +27,9 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     String updatePACCOrganizationJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACCOrganization.json";
     String deletePACCOrganizationJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCOrganization.json";
 
+    int updatePACCOrganizationId = getQueryParamFromJsonFile(updatePACCOrganizationJson,organizationID);
+    int deletePACCOrganizationId = getQueryParamFromJsonFile(deletePACCOrganizationJson,organizationID);
+
     public OrganizationTestPACCDataLink() throws IOException, ParseException {
     }
 
@@ -66,11 +69,9 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups = {"PACCDataLink"})
     public void updatePACCOrganization() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(updatePACCOrganizationJson,organizationID);
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(extractJsonToBePatched(updatePACCOrganizationJson))
-                .when().patch(b.resourceUpdatePACCOrganization+id)
+                .when().patch(b.resourceUpdatePACCOrganization+updatePACCOrganizationId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating PACC organization.");
@@ -86,8 +87,7 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     public void deletePACCOrganization() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(deletePACCOrganizationJson)))
-                .when().post(b.resourceDeletePACCOrganization)
+                .when().delete(b.resourceDeletePACCOrganization+deletePACCOrganizationId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for deleting PACC organization.");

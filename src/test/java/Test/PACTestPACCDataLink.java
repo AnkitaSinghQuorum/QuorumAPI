@@ -23,10 +23,15 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     String pacID = "PACID";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
+
     String getSinglePACJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePAC.json";
     String addNewPACCPACJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCPAC.json";
     String updatePACCPACJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACCPAC.json";
     String deletePACCPACJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCPAC.json";
+
+    int getSinglePACId = getQueryParamFromJsonFile(getSinglePACJson,pacID);
+    int updatePACCPACId = getQueryParamFromJsonFile(updatePACCPACJson,pacID);
+    int deletePACCPACId = getQueryParamFromJsonFile(deletePACCPACJson,pacID);
 
     public PACTestPACCDataLink() throws IOException, ParseException {
     }
@@ -50,10 +55,8 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getSinglePAC() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(getSinglePACJson,pacID);
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .when().get(b.resourceGetSinglePAC+id)
+                .when().get(b.resourceGetSinglePAC+getSinglePACId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting a single PAC.");
@@ -86,8 +89,8 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     public void updatePACCPAC() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(updatePACCPACJson)))
-                .when().patch(b.resourceUpdatePACCPAC)
+                .body(extractJsonToBePatched(updatePACCPACJson))
+                .when().patch(b.resourceUpdatePACCPAC+updatePACCPACId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating PACC PAC.");
@@ -103,8 +106,7 @@ public class PACTestPACCDataLink extends PACCDataLinkEndpoint {
     public void deletePACCPAC() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(deletePACCPACJson)))
-                .when().post(b.resourceDeletePACCPAC)
+                .when().delete(b.resourceDeletePACCPAC+deletePACCPACId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for deleting PACC PAC.");

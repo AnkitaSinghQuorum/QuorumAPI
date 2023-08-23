@@ -18,6 +18,7 @@ public class CompanyTestPACCDataLink extends PACCDataLinkEndpoint {
     LoginTestGRAPIServices login = new LoginTestGRAPIServices();
     BaseEndpoint b = new BaseEndpoint();
     Response response;
+    String companyId = "CompanyID";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
 
@@ -32,18 +33,13 @@ public class CompanyTestPACCDataLink extends PACCDataLinkEndpoint {
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
 
-        log.info("Request hit successfully and response is received for get PACC company.");
+        log.info("Request hit successfully and response is received to get PACC company.");
+        log.info("CompanyID extracted from response is "+ getJsonPath(response, companyId));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
 
-        log.info("CompanyID extracted from response is "+ getJsonPath(response, "CompanyID"));
-
         log.info("Status code is " + response.getStatusCode());
     }
 
-//    @Test(groups ={"PACCDataLink"})
-//    public void addNewPACCCompany(){
-//
-//    }
 }

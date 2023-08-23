@@ -1,39 +1,15 @@
 {
-  "UserAccountID": 4022,
-  "LoginName": "admintest",
-  "FirstName": "Mark",
-  "LastName": "Joeyrth",
-  "EMailAddress": "mark@gmail.com",
-  "PrivatizeNotes": true,
-  "SystemAdministrator": true,
-  "Version": 0,
-  "MailAccountName": "",
-  "AddressLine1": "999 Oak Lane",
-  "AddressLine2": "",
-  "City": "Any City",
-  "State": "Any Town",
-  "Zip": "20456",
-  "CountryID": 0,
-  "Phone": "",
-  "Fax": "",
-  "CreditCardType": "",
-  "CreditCardNumber": "",
-  "CreditCardExpiryDate": "",
-  "CreditCardName": "",
-  "BroadcastFaxRate": 0,
-  "FeatureMode": "",
-  "FailedAttempts": 0,
-  "IsLocked": false,
-  "CompanyID": 142975,
-  "UserAccountDepartmentID": 0,
-  "LoginID": "12345",
-  "UserTypeID": 0,
-  "DefaultDashboardViewID": 0,
-  "TimeZoneName": "",
-  "SalesforceUserId": "",
-  "PRWebCompanyName": "",
-  "EmailUploadConfirmation": true,
-  "OpenID": "",
-  "IsPrimary": true
+  "UserAccountID": 4072,
+  "patch":[
+    {
+      "op": "replace",
+      "path": "/BroadcastFaxRate",
+      "value": "0"
+    },
+    {
+      "op": "replace",
+      "path": "/Version",
+      "value": "2"
+    }
+  ]
 }
-

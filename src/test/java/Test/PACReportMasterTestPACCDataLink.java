@@ -32,9 +32,13 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     String pacReportMasterID ="PACReportMasterID";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
+
     String getSinglePACReportJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACReport.json";
     String editSinglePACReportJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/EditSinglePACReport.json";
     String addNewPACCPACReportJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCPACReport.json";
+
+    int getSinglePACReportId = getQueryParamFromJsonFile(getSinglePACReportJson,pacReportMasterID);
+    int editSinglePACReportId = getQueryParamFromJsonFile(editSinglePACReportJson,pacReportMasterID);
 
     public PACReportMasterTestPACCDataLink() throws IOException, ParseException {
     }
@@ -58,10 +62,8 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getSinglePACReport() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(getSinglePACReportJson,pacReportMasterID);
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .when().get(b.resourceGetSinglePACReport+id)
+                .when().get(b.resourceGetSinglePACReport+getSinglePACReportId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting a single PAC Report.");
@@ -76,11 +78,9 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void editSinglePACReport() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(editSinglePACReportJson,pacReportMasterID);
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(extractJsonToBePatched(editSinglePACReportJson))
-                .when().patch(b.resourceEditSinglePACReport+id)
+                .when().patch(b.resourceEditSinglePACReport+editSinglePACReportId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating single PAC Report.");
