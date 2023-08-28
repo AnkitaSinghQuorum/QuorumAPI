@@ -21,11 +21,16 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     LoginTestGRAPIServices login = new LoginTestGRAPIServices();
     BaseEndpoint b = new BaseEndpoint();
     Response response;
+    String userAccountID = "UserAccountID";
+
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
+
     String addUserAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewUserAccounts.json";
     String deleteUserAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeleteUserAccount.json";
     String updateUserAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdateUserAccount.json";
-    String userAccountID = "UserAccountID";
+
+    int updateUserAccountId = getQueryParamFromJsonFile(updateUserAccountJson,userAccountID);
+    int deleteUserAccountId = getQueryParamFromJsonFile(deleteUserAccountJson,userAccountID);
 
     public UserAccountTestPACCDataLink() throws IOException, ParseException {
     }
@@ -33,17 +38,15 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getListOfAllUserAccounts() throws IOException, ParseException {
 
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetListOfUserAccounts)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting list of User Accounts.");
+        log.info("User Accounts ID extracted from response are " + getJsonPath(response, "UserAccountID"));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
-
-        log.info("User Accounts ID extracted from response are " + getJsonPath(response, "UserAccountID"));
 
         log.info("Status code is " + response.getStatusCode());
     }
@@ -69,8 +72,7 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
 //    public void deleteUserAccounts() throws IOException, ParseException {
 //
 //        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-//                .body(Files.readAllBytes(Paths.get(deleteUserAccountJson)))
-//                .when().post(b.resourceDeleteUserAccount)
+//                .when().delete(b.resourceDeleteUserAccount+deleteUserAccountId)
 //                .then().spec(responseSpecificationForStatusCode()).extract().response();
 //
 //        log.info("Request hit successfully and response is received for deleting user account.");
@@ -83,11 +85,11 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
 //    }
 
     @Test(groups ={"PACCDataLink"})
-    public void updatePACCPAC() throws IOException, ParseException {
+    public void updatePACCUserAccount() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(updateUserAccountJson)))
-                .when().patch(b.resourceUpdateUserAccount)
+                .body(extractJsonToBePatched(updateUserAccountJson))
+                .when().patch(b.resourceUpdateUserAccount+updateUserAccountId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating User Account.");

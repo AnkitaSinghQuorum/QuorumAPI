@@ -5,7 +5,7 @@
 
         <groups>
             <run>
-                <include name = "PACCDataLink1"/>
+                <include name = "PACCDataLink"/>
 <!--                <include name = "P2P"/>-->
 
             </run>
@@ -14,7 +14,7 @@
 <!--               <class name="Test.CompanyTestPACCDataLink"/>-->
 <!--               <class name="Test.OrganizationTestPACCDataLink"/>-->
 <!--               <class name="Test.PACTestPACCDataLink"></class>-->
-               <class name="Test.PACAccountTestPACCDataLink"></class>
+<!--               <class name="Test.PACAccountTestPACCDataLink"></class>-->
 <!--                <class name="Test.PACReportMasterTestPACCDataLink"></class>-->
 <!--                <class name="Test.PACOrganizationTestPACCDataLink"></class>-->
 <!--                <class name="Test.StateReportJobTestPACCDataLink"></class>-->

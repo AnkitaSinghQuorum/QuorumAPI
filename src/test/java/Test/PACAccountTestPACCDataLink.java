@@ -24,12 +24,16 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     String pacAccountID = "PACAccountID";
 
     String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
+
     String getSinglePACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACAccount.json";
     String addSinglePACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddSinglePACAccount.json";
     String updatePACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACAccount.json";
     String deletePACCPACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCPACAccount.json";
 
     int deletePACCPACAccountId = getQueryParamFromJsonFile(deletePACCPACAccountJson,pacAccountID);
+
+    int getSinglePACAccountId = getQueryParamFromJsonFile(getSinglePACAccountJson,pacAccountID);
+    int updatePACAccountId = getQueryParamFromJsonFile(updatePACAccountJson,pacAccountID);
 
     public PACAccountTestPACCDataLink() throws IOException, ParseException {
     }
@@ -53,10 +57,8 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getSinglePACAccount() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(getSinglePACAccountJson,pacAccountID);
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .when().get(b.resourceGetSinglePACAccount+id)
+                .when().get(b.resourceGetSinglePACAccount+getSinglePACAccountId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting a single PAC Account.");
@@ -89,8 +91,8 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     public void updatePACAccount() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .body(Files.readAllBytes(Paths.get(updatePACAccountJson)))
-                .when().post(b.resourceUpdatePACAccount)
+                .body(extractJsonToBePatched(updatePACAccountJson))
+                .when().patch(b.resourceUpdatePACAccount+updatePACAccountId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating PACCAccount.");

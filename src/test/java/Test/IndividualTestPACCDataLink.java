@@ -21,12 +21,16 @@ public class IndividualTestPACCDataLink extends PACCDataLinkEndpoint {
     BaseEndpoint b = new BaseEndpoint();
     Response response;
     String individualId = "IndividualId";
+
+    String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
+
     String getSingleIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSingleIndividual.json";
     String addIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddIndividual.json";
     String updateSingleIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdateSingleIndividual.json";
     String deleteIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeleteIndividual.json";
 
-    String bearerTokenGRAPIServices = login.generateAccessTokenGRAPIServices();
+    int getSingleIndividualId = getQueryParamFromJsonFile(getSingleIndividualJson,individualId);
+    int updateSingleIndividualId = getQueryParamFromJsonFile(updateSingleIndividualJson,individualId);
 
     int deleteIndividualId = getQueryParamFromJsonFile(deleteIndividualJson,individualId);
 
@@ -52,10 +56,8 @@ public class IndividualTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getSingleIndividual() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(getSingleIndividualJson,individualId);
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .when().get(b.resourceGetSingleIndividual+id)
+                .when().get(b.resourceGetSingleIndividual+ getSingleIndividualId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting a single individual.");
@@ -88,11 +90,9 @@ public class IndividualTestPACCDataLink extends PACCDataLinkEndpoint {
 
     public void updateSingleIndividual() throws IOException, ParseException {
 
-        int id = getQueryParamFromJsonFile(updateSingleIndividualJson,individualId);
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .body(extractJsonToBePatched(updateSingleIndividualJson))
-                .when().patch(b.resourceUpdateSingleIndividual+id)
+                .when().patch(b.resourceUpdateSingleIndividual+updateSingleIndividualId)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for updating single individual.");

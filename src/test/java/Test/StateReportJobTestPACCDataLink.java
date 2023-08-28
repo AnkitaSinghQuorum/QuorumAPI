@@ -27,7 +27,6 @@ public class StateReportJobTestPACCDataLink extends PACCDataLinkEndpoint {
     @Test(groups ={"PACCDataLink"})
     public void getJobStatusByJobActionID() throws IOException, ParseException {
 
-
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
                 .when().get(b.resourceGetJobStatusByJobActionID+jobActionID)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();

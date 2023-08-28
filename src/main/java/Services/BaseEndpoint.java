@@ -23,22 +23,23 @@ public class BaseEndpoint {
     public String resourceAddCompany = "/api/datalink/addcompany";
 
     // GRAPIServices.PACCDataLink Organization
-    public String resourceGetPACCOrganizations ="/api/datalink/organization/get";
+    public String resourceGetPACCOrganizations ="/api/datalink/organization/getall";
     public String resourceAddNewPACCOrganization ="/api/datalink/organization/add";
-    public String resourceUpdatePACCOrganization ="/api/datalink/organization/update";
-    public String resourceDeletePACCOrganization ="/api/datalink/organization/delete";
+    public String resourceUpdatePACCOrganization ="/api/datalink/organization/edit/";
+    public String resourceDeletePACCOrganization ="/api/datalink/organization/delete/";
 
     // GRAPIServices.PACCDataLink PAC
     public String resourceGetListOfPACs = "/api/datalink/pac/getall";
     public String resourceGetSinglePAC = "/api/datalink/pac/get/";
     public String resourceAddNewPACCPAC = "/api/datalink/pac/add";
-    public String resourceUpdatePACCPAC = "/api/datalink/pac/update";
-    public String resourceDeletePACCPAC = "/api/datalink/pac/delete";
+    public String resourceUpdatePACCPAC = "/api/datalink/pac/edit/";
+    public String resourceDeletePACCPAC = "/api/datalink/pac/delete/";
 
     // GRAPIServices.PACCDataLink PACAccount
     public String resourceGetListOfPACAccounts = "/api/datalink/pacaccount/getall";
     public String resourceGetSinglePACAccount = "/api/datalink/pacaccount/get/";
     public String resourceAddSinglePACAccount = "/api/datalink/pacaccount/add";
+    public String resourceUpdatePACAccount = "/api/datalink/pacaccount/edit/";
     public String resourceUpdatePACAccount = "/api/datalink/pacaccount/edit";
     public String resourceDeletePACCPACAccount = "/api/datalink/pacaccount/delete/";
 
@@ -49,17 +50,16 @@ public class BaseEndpoint {
     public String resourceAddNewPACCPACReport = "/api/datalink/pacreportmaster/add";
 
     // GRAPIServices.PACCDataLink userAccount
-    public String resourceGetListOfUserAccounts = "/api/datalink/useraccount/get";
+    public String resourceGetListOfUserAccounts = "/api/datalink/useraccount/getall";
     public String resourceAddNewUserAccount = "/api/datalink/useraccount/add";
-    public String resourceDeleteUserAccount = "/api/datalink/useraccount/delete";
-    public String resourceUpdateUserAccount = "/api/datalink/useraccount/update";
-
+    public String resourceDeleteUserAccount = "/api/datalink/useraccount/delete/";
+    public String resourceUpdateUserAccount = "/api/datalink/useraccount/edit/";
 
     // GRAPIServices.PACCDataLink PAC Organizations
     public String resourceGetListOfPACOrgs = "/api/datalink/pacorganization/getall";
     public String resourceAddNewPACOrgs =  "/api/datalink/pacorganization/add";
     public String resourceGetSinglePACOrgs = "/api/datalink/pacorganization/get/";
-    public String resourceUpdatePACOrgs = "/api/datalink/pacorganization/edit";
+    public String resourceUpdatePACOrgs = "/api/datalink/pacorganization/edit/";
 
     // GRAPIServices.PACCDataLink StateReportJob
     public String resourceGetJobStatusByJobActionID = "/api/statereport/getjobstatus/";

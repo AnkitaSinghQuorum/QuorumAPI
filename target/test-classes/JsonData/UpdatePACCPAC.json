@@ -1,21 +1,15 @@
 {
-  "PACID": 1900,
-  "Juris": "MD",
-  "IsHoldingPAC": false,
-  "IsAffiliated": false,
-  "AddressLine1": "Test Address 1",
-  "City": "Test City",
-  "State": "MD",
-  "IsPledgeWarn": false,
-  "IsForceBudgets": false,
-  "IsNoOverBudgetPayments": false,
-  "IsAllIndividualsAreMembers": false,
-  "IsApplyPledgePaymentsByImport": false,
-  "IsHasPledges": false,
-  "IsHasSource": false,
-  "IsHasGLAccounts": false,
-  "CompanyID": 142975,
-  "Version": 0,
-  "IsNegativeBalanceAllowed": false,
-  "IsHasDues": false
+  "PACID": 1963,
+  "patch":[
+    {
+      "op": "replace",
+      "path": "/Juris",
+      "value": "US"
+    },
+    {
+      "op": "replace",
+      "path": "/Version",
+      "value": "2"
+    }
+  ]
 }
