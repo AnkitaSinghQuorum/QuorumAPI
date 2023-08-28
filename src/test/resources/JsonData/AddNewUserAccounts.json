@@ -1,5 +1,4 @@
-[
-  {
+{
     "UserAccountID": 1998703,
     "LoginName": "SystemAdmin",
     "FirstName": "Kelvin",
@@ -37,4 +36,3 @@
     "OpenID": "",
     "IsPrimary": true
   }
-]
