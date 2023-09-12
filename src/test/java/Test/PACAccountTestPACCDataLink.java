@@ -28,6 +28,9 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     String getSinglePACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACAccount.json";
     String addSinglePACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddSinglePACAccount.json";
     String updatePACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACAccount.json";
+    String deletePACCPACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCPACAccount.json";
+
+    int deletePACCPACAccountId = getQueryParamFromJsonFile(deletePACCPACAccountJson,pacAccountID);
 
     int getSinglePACAccountId = getQueryParamFromJsonFile(getSinglePACAccountJson,pacAccountID);
     int updatePACAccountId = getQueryParamFromJsonFile(updatePACAccountJson,pacAccountID);
@@ -101,5 +104,22 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
 
     }
+
+    @Test(groups = {"PACCDataLink"})
+    public void deletePACCPACAccount() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .when().delete(b.resourceDeletePACCPACAccount+deletePACCPACAccountId)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
+
+        log.info("Request hit successfully and response is received for deleting PACC PACAccount.");
+        log.info("The deleted PACAccount Id is " + getJsonPath(response, pacAccountID));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
 
 }

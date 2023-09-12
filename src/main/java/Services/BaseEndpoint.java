@@ -19,7 +19,8 @@ public class BaseEndpoint {
     public String basePACCDataLinkUrl = "http://10.18.5.149/GRAPIServices.PACCDataLink_deploy";
 
     // GRAPIServices.PACCDataLink Company
-    public String resourceGetCompany = "/api/datalink/get";
+    public String resourceGetCompany = "/api/datalink/getcompany";
+    public String resourceAddCompany = "/api/datalink/addcompany";
 
     // GRAPIServices.PACCDataLink Organization
     public String resourceGetPACCOrganizations ="/api/datalink/organization/getall";
@@ -39,12 +40,14 @@ public class BaseEndpoint {
     public String resourceGetSinglePACAccount = "/api/datalink/pacaccount/get/";
     public String resourceAddSinglePACAccount = "/api/datalink/pacaccount/add";
     public String resourceUpdatePACAccount = "/api/datalink/pacaccount/edit/";
+    public String resourceDeletePACCPACAccount = "/api/datalink/pacaccount/delete/";
 
     // GRAPIServices.PACCDataLink PACReportMaster
     public String resourceGetListOfPACReportMasterRecords = "/api/datalink/pacreportmaster/getall";
     public String resourceGetSinglePACReport = "/api/datalink/pacreportmaster/get/";
     public String resourceEditSinglePACReport = "/api/datalink/pacreportmaster/edit/";
     public String resourceAddNewPACCPACReport = "/api/datalink/pacreportmaster/add";
+    public String resourceDeletePACCPACReport = "/api/datalink/pacreportmaster/delete/";
 
     // GRAPIServices.PACCDataLink userAccount
     public String resourceGetListOfUserAccounts = "/api/datalink/useraccount/getall";
@@ -57,6 +60,7 @@ public class BaseEndpoint {
     public String resourceAddNewPACOrgs =  "/api/datalink/pacorganization/add";
     public String resourceGetSinglePACOrgs = "/api/datalink/pacorganization/get/";
     public String resourceUpdatePACOrgs = "/api/datalink/pacorganization/edit/";
+    public String resourceDeletePACCPACOrgs = "/api/datalink/pacorganization/delete/";
 
     // GRAPIServices.PACCDataLink StateReportJob
     public String resourceGetJobStatusByJobActionID = "/api/statereport/getjobstatus/";
@@ -66,5 +70,6 @@ public class BaseEndpoint {
     public String resourceGetSingleIndividual = "/api/datalink/individual/get/";
     public String resourceAddIndividual = "/api/datalink/individual/add";
     public String resourceUpdateSingleIndividual = "/api/datalink/individual/edit/";
+    public String resourceDeleteIndividual = "/api/datalink/individual/delete/";
 }
 

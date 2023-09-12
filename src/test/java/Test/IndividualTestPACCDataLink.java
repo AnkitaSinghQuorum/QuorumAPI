@@ -27,9 +27,12 @@ public class IndividualTestPACCDataLink extends PACCDataLinkEndpoint {
     String getSingleIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSingleIndividual.json";
     String addIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddIndividual.json";
     String updateSingleIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdateSingleIndividual.json";
+    String deleteIndividualJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeleteIndividual.json";
 
     int getSingleIndividualId = getQueryParamFromJsonFile(getSingleIndividualJson,individualId);
     int updateSingleIndividualId = getQueryParamFromJsonFile(updateSingleIndividualJson,individualId);
+
+    int deleteIndividualId = getQueryParamFromJsonFile(deleteIndividualJson,individualId);
 
     public IndividualTestPACCDataLink() throws IOException, ParseException {
     }
@@ -84,6 +87,7 @@ public class IndividualTestPACCDataLink extends PACCDataLinkEndpoint {
     }
 
     @Test(groups ={"PACCDataLink"})
+
     public void updateSingleIndividual() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
@@ -93,6 +97,22 @@ public class IndividualTestPACCDataLink extends PACCDataLinkEndpoint {
 
         log.info("Request hit successfully and response is received for updating single individual.");
         log.info("The updated Individual ID is " + getJsonPath(response, individualId));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
+    @Test(groups = {"PACCDataLink"})
+    public void deleteIndividual() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .when().delete(b.resourceDeleteIndividual+deleteIndividualId)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
+
+        log.info("Request hit successfully and response is received for deleting single individual.");
+        log.info("The deleted Individual Id is " + getJsonPath(response, individualId));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");
