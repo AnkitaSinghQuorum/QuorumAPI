@@ -36,9 +36,11 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
     String getSinglePACReportJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACReport.json";
     String editSinglePACReportJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/EditSinglePACReport.json";
     String addNewPACCPACReportJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCPACReport.json";
+    String deletePACCPACReportJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCPACReport.json";
 
     int getSinglePACReportId = getQueryParamFromJsonFile(getSinglePACReportJson,pacReportMasterID);
     int editSinglePACReportId = getQueryParamFromJsonFile(editSinglePACReportJson,pacReportMasterID);
+    int deletePACCPACReportId = getQueryParamFromJsonFile(deletePACCPACReportJson,pacReportMasterID);
 
     public PACReportMasterTestPACCDataLink() throws IOException, ParseException {
     }
@@ -102,6 +104,22 @@ public class PACReportMasterTestPACCDataLink extends PACCDataLinkEndpoint {
 
         log.info("Request hit successfully and response is received for adding new PACC PACReport.");
         log.info("The added PACReportMasterID is " + getJsonPath(response, pacReportMasterID));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
+    @Test(groups = {"PACCDataLink"})
+    public void deletePACCPACReport() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .when().delete(b.resourceDeletePACCPACReport+deletePACCPACReportId)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
+
+        log.info("Request hit successfully and response is received for deleting PACC PACReport.");
+        log.info("The deleted Organization Id is " + getJsonPath(response, pacReportMasterID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");

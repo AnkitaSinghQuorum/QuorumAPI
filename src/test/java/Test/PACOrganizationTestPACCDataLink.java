@@ -28,9 +28,11 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     String addPACOrgsJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACOrgs.json";
     String updatePACOrgsJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACOrgs.json";
     String getSinglePACOrgsJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACOrgs.json";
+    String deletePACCPACOrgsJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCPACOrgs.json";
 
     int getSinglePACOrgsId = getQueryParamFromJsonFile(getSinglePACOrgsJson,pacOrganizationID);
     int updatePACOrgsId = getQueryParamFromJsonFile(updatePACOrgsJson,pacOrganizationID);
+    int deletePACCPACOrgsId = getQueryParamFromJsonFile(deletePACCPACOrgsJson,pacOrganizationID);
 
     public PACOrganizationTestPACCDataLink() throws IOException, ParseException {
     }
@@ -94,6 +96,22 @@ public class PACOrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
 
         log.info("Request hit successfully and response is received for updating PAC orgs.");
         log.info("The updated PAC ID is " + getJsonPath(response, pacOrganizationID));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
+    @Test(groups = {"PACCDataLink"})
+    public void deletePACCPACOrgs() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .when().delete(b.resourceDeletePACCPACOrgs+deletePACCPACOrgsId)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
+
+        log.info("Request hit successfully and response is received for deleting PACC PACorganization.");
+        log.info("The deleted Organization Id is " + getJsonPath(response, pacOrganizationID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");

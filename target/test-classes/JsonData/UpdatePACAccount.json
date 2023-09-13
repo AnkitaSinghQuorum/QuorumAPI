@@ -1,26 +1,15 @@
 {
-  "PACAccountID": 4704562,
-  "EntityID": 5714325,
-  "EntityType": "I",
-  "PACID": 1283,
-  "PACPercentage": 1,
-  "PACLimitType": "IND",
-  "PayrollCycle": "N",
-  "PayrollDeductionAmount": 0,
-  "CompanyID": 142973,
-  "Version": 3,
-  "PACAccountBalance": null,
-  "PACReceivedAmountYTD": null,
-  "PACReceivedAmountLYTD": null,
-  "PACReceivedCountYTD": 0,
-  "PACReceivedCountLYTD": 0,
-  "PACReceiptLastAmount": 8.99,
-  "PACReceiptLastDate": "2019-01-27T00:00:00",
-  "PACPledgeRemainingAmount": null,
-  "PACPledgeLastDate": null,
-  "PACPledgeLastAmount": null,
-  "PACPledgeLastBillDate": null,
-  "PACPledgeLastBillAmount": null,
-  "PACPledgeLastPaymentAmount": null,
-  "PACPledgeLastPaymentDate": null
+  "PACAccountID": 4800743,
+  "patch":[
+    {
+      "op": "replace",
+      "path": "/PACPercentage",
+      "value": "1"
+    },
+    {
+      "op": "replace",
+      "path": "/Version",
+      "value": "2"
+    }
+  ]
 }
