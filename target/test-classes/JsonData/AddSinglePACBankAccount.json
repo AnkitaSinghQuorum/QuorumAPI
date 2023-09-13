@@ -1,0 +1,19 @@
+{
+  "PACBankAccountID": 0,
+  "BankAccountExternalID": "",
+  "PACID": 1963,
+  "AccountNumber": "",
+  "Name": "",
+  "AccountType": "",
+  "IsDefault": true,
+  "NextCheckNo": 108,
+  "Address1": "",
+  "Address2": "",
+  "City": "",
+  "State": "",
+  "Zip": "",
+  "phone": "",
+  "CompanyID": 142975,
+  "Version": 0,
+  "DefaultCheckType": "C"
+}

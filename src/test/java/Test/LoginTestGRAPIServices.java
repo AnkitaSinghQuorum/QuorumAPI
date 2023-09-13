@@ -22,7 +22,6 @@ public class LoginTestGRAPIServices extends LoginEndpoint {
             response = requestSpecificationForGRAPIServices().when().post(b.resourceLoginAndGetJWT).then().spec(responseSpecificationForStatusCode()).extract().response();
             log.info("Access Token for GRAPIServices generated successfully.");
 
-
             accessTokenGRAPIServices = getJsonPath(response, "access_token");
 
             log.info("Access Token for GRAPIServices is " + accessTokenGRAPIServices);
