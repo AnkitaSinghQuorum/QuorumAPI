@@ -26,9 +26,11 @@ public class PACBankAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     String getSinglePACBankAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACBankAccount.json";
     String addSinglePACBankAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddSinglePACBankAccount.json";
     String updatePACBankAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACBankAccount.json";
+    String deletePACCPACBankAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCPACBankAccount.json";
 
     int getSinglePACBankAccountId = getQueryParamFromJsonFile(getSinglePACBankAccountJson,pacBankAccountID);
     int updatePACBankAccountId = getQueryParamFromJsonFile(updatePACBankAccountJson,pacBankAccountID);
+    int deletePACCPACBankAccountId = getQueryParamFromJsonFile(deletePACCPACBankAccountJson,pacBankAccountID);
 
     public PACBankAccountTestPACCDataLink() throws IOException, ParseException {
     }
@@ -98,5 +100,21 @@ public class PACBankAccountTestPACCDataLink extends PACCDataLinkEndpoint {
 
         log.info("Status code is " + response.getStatusCode());
 
+    }
+
+    @Test(groups = {"PACCDataLink"})
+    public void deletePACCPACBankAccount() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .when().delete(b.resourceDeletePACCPACBankAccount+deletePACCPACBankAccountId)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
+
+        log.info("Request hit successfully and response is received for deleting PACC PAC Bank Account.");
+        log.info("The deleted PACBankAccount Id is " + getJsonPath(response, pacBankAccountID));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
     }
 }

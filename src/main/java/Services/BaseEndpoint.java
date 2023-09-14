@@ -69,6 +69,7 @@ public class BaseEndpoint {
     public String resourceGetSingleIndividual = "/api/datalink/individual/get/";
     public String resourceAddIndividual = "/api/datalink/individual/add";
     public String resourceUpdateSingleIndividual = "/api/datalink/individual/edit/";
+    public String resourceDeleteIndividual = "/api/datalink/individual/delete/";
 
     // GRAPIServices.PACCDataLink PACBankAccount
     public String resourceGetListOfPACBankAccounts = "/api/datalink/pacbankaccount/getall";
@@ -77,6 +78,6 @@ public class BaseEndpoint {
     public String resourceUpdatePACBankAccount = "/api/datalink/pacbankaccount/edit/";
     public String resourceDeletePACCPACBankAccount = "/api/datalink/pacbankaccount/delete/";
 
-    public String resourceDeleteIndividual = "/api/datalink/individual/delete/";
+
 }
 
