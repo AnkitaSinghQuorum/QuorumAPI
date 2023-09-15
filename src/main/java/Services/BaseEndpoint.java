@@ -19,8 +19,7 @@ public class BaseEndpoint {
     public String basePACCDataLinkUrl = "http://10.18.5.149/GRAPIServices.PACCDataLink_deploy";
 
     // GRAPIServices.PACCDataLink Company
-    public String resourceGetCompany = "/api/datalink/getcompany";
-    public String resourceAddCompany = "/api/datalink/addcompany";
+    public String resourceGetCompany = "/api/datalink/get";
 
     // GRAPIServices.PACCDataLink Organization
     public String resourceGetPACCOrganizations ="/api/datalink/organization/getall";
@@ -71,5 +70,14 @@ public class BaseEndpoint {
     public String resourceAddIndividual = "/api/datalink/individual/add";
     public String resourceUpdateSingleIndividual = "/api/datalink/individual/edit/";
     public String resourceDeleteIndividual = "/api/datalink/individual/delete/";
+
+    // GRAPIServices.PACCDataLink PACBankAccount
+    public String resourceGetListOfPACBankAccounts = "/api/datalink/pacbankaccount/getall";
+    public String resourceGetSinglePACBankAccount = "/api/datalink/pacbankaccount/get/";
+    public String resourceAddSinglePACBankAccount = "/api/datalink/pacbankaccount/add";
+    public String resourceUpdatePACBankAccount = "/api/datalink/pacbankaccount/edit/";
+    public String resourceDeletePACCPACBankAccount = "/api/datalink/pacbankaccount/delete/";
+
+
 }
 
