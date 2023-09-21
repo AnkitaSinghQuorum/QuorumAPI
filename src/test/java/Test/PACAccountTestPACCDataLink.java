@@ -31,7 +31,6 @@ public class PACAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     String deletePACCPACAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCPACAccount.json";
 
     int deletePACCPACAccountId = getQueryParamFromJsonFile(deletePACCPACAccountJson,pacAccountID);
-
     int getSinglePACAccountId = getQueryParamFromJsonFile(getSinglePACAccountJson,pacAccountID);
     int updatePACAccountId = getQueryParamFromJsonFile(updatePACAccountJson,pacAccountID);
 

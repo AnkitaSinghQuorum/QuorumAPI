@@ -78,6 +78,13 @@ public class BaseEndpoint {
     public String resourceUpdatePACBankAccount = "/api/datalink/pacbankaccount/edit/";
     public String resourceDeletePACCPACBankAccount = "/api/datalink/pacbankaccount/delete/";
 
+    // GRAPIServices.PACCDataLink PACTransaction
+    public String resourceGetListOfPACTransactions = "/api/datalink/pactransaction/getall";
+    public String resourceGetSinglePACTransaction = "/api/datalink/pactransaction/get/";
+    public String resourceAddSinglePACTransaction = "/api/datalink/pactransaction/add";
+    public String resourceEditPACTransaction = "/api/datalink/pactransaction/edit/";
+    public String resourceDeleteSinglePACTransaction = "/api/datalink/pactransaction/delete/";
+
 
 }
 
