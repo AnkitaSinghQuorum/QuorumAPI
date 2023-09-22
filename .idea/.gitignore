@@ -4,4 +4,4 @@
 /.idea
 /automation.out
 /emailable-report.html
-/target/
+target/
