@@ -22,9 +22,8 @@
                <class name="Test.IndividualTestPACCDataLink"></class>
                <class name="Test.PACBankAccountTestPACCDataLink"></class>
                <class name="Test.PACTransactionTestPACCDataLink"></class>
-
-
-<!--                <class name="Test.IndividualTestP2P"/>-->
+                <class name="Test.PACJurisdictionTestPACCDataLink"></class>
+                <class name="Test.IndividualTestP2P"/>
 
         </classes>
 <!--        <classes><class name="Test.OrganizationTestPACCDataLink"></class></classes>-->

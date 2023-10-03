@@ -1,0 +1,15 @@
+{
+  "PACJurisdictionID": 2570,
+  "patch":[
+    {
+      "op": "replace",
+      "path": "/Juris",
+      "value": "SF"
+    },
+    {
+      "op": "replace",
+      "path": "/Version",
+      "value": "2"
+    }
+  ]
+}

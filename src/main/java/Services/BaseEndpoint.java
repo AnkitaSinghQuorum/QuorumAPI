@@ -85,6 +85,13 @@ public class BaseEndpoint {
     public String resourceEditPACTransaction = "/api/datalink/pactransaction/edit/";
     public String resourceDeleteSinglePACTransaction = "/api/datalink/pactransaction/delete/";
 
+    // GRAPIServices.PACCDataLink PACJurisdiction
+    public String resourceGetListOfPACJurisdictions = "/api/datalink/pacjurisdiction/getall";
+    public String resourceGetSinglePACJurisdiction = "/api/datalink/pacjurisdiction/get/";
+    public String resourceAddSinglePACJurisdiction = "/api/datalink/pacjurisdiction/add";
+    public String resourceEditPACJurisdiction = "/api/datalink/pacjurisdiction/edit/";
+    public String resourceDeleteSinglePACJurisdiction = "/api/datalink/pacjurisdiction/delete/";
+
 
 }
 
