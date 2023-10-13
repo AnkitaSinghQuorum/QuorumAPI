@@ -1,7 +1,5 @@
 package Services;
 
-import java.net.URI;
-
 public class BaseEndpoint {
 
     //for individual get, update, delete, post url
@@ -91,6 +89,13 @@ public class BaseEndpoint {
     public String resourceAddSinglePACJurisdiction = "/api/datalink/pacjurisdiction/add";
     public String resourceEditPACJurisdiction = "/api/datalink/pacjurisdiction/edit/";
     public String resourceDeleteSinglePACJurisdiction = "/api/datalink/pacjurisdiction/delete/";
+
+    // GRAPIServices.PACCDataLink PACElection
+    public String resourceGetListOfPACElections = "/api/datalink/pacelection/getall";
+    public String resourceGetSinglePACElection = "/api/datalink/pacelection/get/";
+    public String resourceAddSinglePACElection = "/api/datalink/pacelection/add";
+    public String resourceEditPACElection = "/api/datalink/pacelection/edit/";
+    public String resourceDeleteSinglePACElection = "/api/datalink/pacelection/delete/";
 
 
 }

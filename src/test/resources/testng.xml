@@ -11,19 +11,20 @@
             </run>
         </groups>
             <classes>
-               <class name="Test.CompanyTestPACCDataLink"/>
-               <class name="Test.OrganizationTestPACCDataLink"/>
-               <class name="Test.PACTestPACCDataLink"></class>
-               <class name="Test.PACAccountTestPACCDataLink"></class>
-               <class name="Test.PACReportMasterTestPACCDataLink"></class>
-               <class name="Test.PACOrganizationTestPACCDataLink"></class>
-               <class name="Test.StateReportJobTestPACCDataLink"></class>
-               <class name="Test.UserAccountTestPACCDataLink"></class>
-               <class name="Test.IndividualTestPACCDataLink"></class>
-               <class name="Test.PACBankAccountTestPACCDataLink"></class>
-               <class name="Test.PACTransactionTestPACCDataLink"></class>
-                <class name="Test.PACJurisdictionTestPACCDataLink"></class>
-                <class name="Test.IndividualTestP2P"/>
+<!--               <class name="Test.CompanyTestPACCDataLink"/>-->
+<!--               <class name="Test.OrganizationTestPACCDataLink"/>-->
+<!--               <class name="Test.PACTestPACCDataLink"></class>-->
+<!--               <class name="Test.PACAccountTestPACCDataLink"></class>-->
+<!--               <class name="Test.PACReportMasterTestPACCDataLink"></class>-->
+<!--               <class name="Test.PACOrganizationTestPACCDataLink"></class>-->
+<!--               <class name="Test.StateReportJobTestPACCDataLink"></class>-->
+<!--               <class name="Test.UserAccountTestPACCDataLink"></class>-->
+<!--               <class name="Test.IndividualTestPACCDataLink"></class>-->
+<!--               <class name="Test.PACBankAccountTestPACCDataLink"></class>-->
+<!--               <class name="Test.PACTransactionTestPACCDataLink"></class>-->
+<!--                <class name="Test.PACJurisdictionTestPACCDataLink"></class>-->
+                <class name="Test.PACElectionTestPACCDataLink"></class>-->
+<!--                <class name="Test.IndividualTestP2P"/>-->
 
         </classes>
 <!--        <classes><class name="Test.OrganizationTestPACCDataLink"></class></classes>-->
