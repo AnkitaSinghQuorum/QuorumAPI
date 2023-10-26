@@ -26,9 +26,11 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
     String addNewPACCOrganizationJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewPACCOrganization.json";
     String updatePACCOrganizationJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdatePACCOrganization.json";
     String deletePACCOrganizationJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeletePACCOrganization.json";
+    String getSinglePACCOrganizationJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetSinglePACCOrganization.json";
 
     int updatePACCOrganizationId = getQueryParamFromJsonFile(updatePACCOrganizationJson,organizationID);
     int deletePACCOrganizationId = getQueryParamFromJsonFile(deletePACCOrganizationJson,organizationID);
+    int getSinglePACCOrganizationId = getQueryParamFromJsonFile(getSinglePACCOrganizationJson,organizationID);
 
     public OrganizationTestPACCDataLink() throws IOException, ParseException {
     }
@@ -40,8 +42,24 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
                 .when().get(b.resourceGetPACCOrganizations)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
-        log.info("Request hit successfully and response is received for get PACC organization.");
+        log.info("Request hit successfully and response is received for get PACC organizations.");
         log.info("Organization IDs extracted from response are " + getJsonPath(response, organizationID));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
+    @Test(groups ={"PACCDataLink1"})
+    public void getSinglePACCOrganization() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .when().get(b.resourceGetSinglePACCOrganization+ getSinglePACCOrganizationId)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
+
+        log.info("Request hit successfully and response is received for getting a single PACC organization.");
+        log.info("Organization Id extracted from response is "+ getJsonPath(response, organizationID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");

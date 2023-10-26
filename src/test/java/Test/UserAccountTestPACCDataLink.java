@@ -28,22 +28,40 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
     String addUserAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/AddNewUserAccounts.json";
     String deleteUserAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/DeleteUserAccount.json";
     String updateUserAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/UpdateUserAccount.json";
+    String getPACCUserAccountJson = System.getProperty("user.dir") + "/src/test/resources/JsonData/GetPACCUserAccount.json";
 
     int updateUserAccountId = getQueryParamFromJsonFile(updateUserAccountJson,userAccountID);
     int deleteUserAccountId = getQueryParamFromJsonFile(deleteUserAccountJson,userAccountID);
+    int getPACCUserAccountId = getQueryParamFromJsonFile(getPACCUserAccountJson,userAccountID);
 
     public UserAccountTestPACCDataLink() throws IOException, ParseException {
     }
 
     @Test(groups ={"PACCDataLink"})
-    public void getListOfAllUserAccounts() throws IOException, ParseException {
+    public void getPACCUserAccounts() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
-                .when().get(b.resourceGetListOfUserAccounts)
+                .when().get(b.resourcePACCUserAccounts)
                 .then().spec(responseSpecificationForStatusCode()).extract().response();
 
         log.info("Request hit successfully and response is received for getting list of User Accounts.");
-        log.info("User Accounts ID extracted from response are " + getJsonPath(response, "UserAccountID"));
+        log.info("User Accounts ID extracted from response are " + getJsonPath(response, userAccountID));
+
+        log.info(response.asPrettyString());
+        log.info("Response json converted to String successfully.");
+
+        log.info("Status code is " + response.getStatusCode());
+    }
+
+    @Test(groups ={"PACCDataLink1"})
+    public void getPACCUserAccount() throws IOException, ParseException {
+
+        response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
+                .when().get(b.resourcePACCUserAccount+getPACCUserAccountId)
+                .then().spec(responseSpecificationForStatusCode()).extract().response();
+
+        log.info("Request hit successfully and response is received for getting PACC User Account.");
+        log.info("User Account ID extracted from response is "+ getJsonPath(response, userAccountID));
 
         log.info(response.asPrettyString());
         log.info("Response json converted to String successfully.");

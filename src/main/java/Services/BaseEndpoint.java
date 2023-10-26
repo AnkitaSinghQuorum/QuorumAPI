@@ -24,6 +24,7 @@ public class BaseEndpoint {
     public String resourceAddNewPACCOrganization ="/api/datalink/organization/add";
     public String resourceUpdatePACCOrganization ="/api/datalink/organization/edit/";
     public String resourceDeletePACCOrganization ="/api/datalink/organization/delete/";
+    public String resourceGetSinglePACCOrganization ="/api/datalink/organization/get/";
 
     // GRAPIServices.PACCDataLink PAC
     public String resourceGetListOfPACs = "/api/datalink/pac/getall";
@@ -47,10 +48,11 @@ public class BaseEndpoint {
     public String resourceDeletePACCPACReport = "/api/datalink/pacreportmaster/delete/";
 
     // GRAPIServices.PACCDataLink userAccount
-    public String resourceGetListOfUserAccounts = "/api/datalink/useraccount/getall";
+    public String resourcePACCUserAccounts = "/api/datalink/useraccount/getall";
     public String resourceAddNewUserAccount = "/api/datalink/useraccount/add";
     public String resourceDeleteUserAccount = "/api/datalink/useraccount/delete/";
     public String resourceUpdateUserAccount = "/api/datalink/useraccount/edit/";
+    public String resourcePACCUserAccount = "/api/datalink/useraccount/get/";
 
     // GRAPIServices.PACCDataLink PAC Organizations
     public String resourceGetListOfPACOrgs = "/api/datalink/pacorganization/getall";
