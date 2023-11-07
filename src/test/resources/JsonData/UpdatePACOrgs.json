@@ -9,7 +9,7 @@
     {
       "op": "replace",
       "path": "/Version",
-      "value": "3"
+      "value": "5"
     }
   ]
 }
