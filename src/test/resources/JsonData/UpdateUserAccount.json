@@ -4,12 +4,12 @@
     {
       "op": "replace",
       "path": "/BroadcastFaxRate",
-      "value": "0"
+      "value": "1"
     },
     {
       "op": "replace",
       "path": "/Version",
-      "value": "2"
+      "value": "3"
     }
   ]
 }

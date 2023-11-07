@@ -51,7 +51,7 @@ public class OrganizationTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
-    @Test(groups ={"PACCDataLink1"})
+    @Test(groups ={"PACCDataLink"})
     public void getSinglePACCOrganization() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
