@@ -53,7 +53,7 @@ public class UserAccountTestPACCDataLink extends PACCDataLinkEndpoint {
         log.info("Status code is " + response.getStatusCode());
     }
 
-    @Test(groups ={"PACCDataLink1"})
+    @Test(groups ={"PACCDataLink"})
     public void getPACCUserAccount() throws IOException, ParseException {
 
         response = given().spec(requestSpecification()).header("Authorization", "Bearer " + bearerTokenGRAPIServices)
