@@ -23,5 +23,5 @@
   "PACPledgeLastBillAmount": null,
   "PACPledgeLastPaymentAmount": null,
   "PACPledgeLastPaymentDate": null,
-  "Individual": null
+  "QuorumID": "50004"
 }

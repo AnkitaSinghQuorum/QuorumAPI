@@ -71,5 +71,6 @@
   "FacebookObjectId": 0,
   "DelawareId": "",
   "VermontId": "",
-  "IsPeer2PeerManager": false
+  "IsPeer2PeerManager": false,
+  "QuorumID": "50002"
 }

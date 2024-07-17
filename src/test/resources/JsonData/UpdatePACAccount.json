@@ -4,12 +4,12 @@
     {
       "op": "replace",
       "path": "/PACPercentage",
-      "value": "2"
+      "value": "1"
     },
     {
       "op": "replace",
       "path": "/Version",
-      "value": "3"
+      "value": "8"
     }
   ]
 }
