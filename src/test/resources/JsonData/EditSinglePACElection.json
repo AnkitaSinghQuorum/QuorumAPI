@@ -4,12 +4,12 @@
     {
       "op": "replace",
       "path": "/Jurisdiction",
-      "value": "ML"
+      "value": "MD"
     },
     {
       "op": "replace",
       "path": "/Version",
-      "value": "4"
+      "value": "8"
     }
   ]
 }

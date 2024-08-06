@@ -34,5 +34,6 @@
     "PRWebCompanyName": "",
     "EmailUploadConfirmation": true,
     "OpenID": "",
-    "IsPrimary": true
+    "IsPrimary": true,
+    "QuorumID": "6"
   }

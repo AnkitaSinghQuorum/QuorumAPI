@@ -2,10 +2,6 @@ package Services;
 
 public class BaseEndpoint {
 
-    //for individual get, update, delete, post url
-    // we can declare all the baseurl+resources;
-    //other modules SIte settings etc
-
     // AWS Non Prod for P2P
     public String baseIdentityServerUrl = "http://10.18.5.149/GRAPIServices.IdentityServer_deploy";
     public String baseP2PApiUrl = "http://10.18.5.149/GRAPIServices.Peer2Peer_deploy";

@@ -18,8 +18,6 @@ import java.util.List;
 import static org.hamcrest.Matchers.*;
 
 
-//import org.slf4j.Logger;
-
 public class UtilityFile {
     public static ResponseSpecification res;
     private static boolean root = false;

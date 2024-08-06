@@ -12,5 +12,6 @@
   "Version": 0,
   "IsSummarizePR": false,
   "IsMajorDonorPAC": false,
-  "IsNYCorp": true
+  "IsNYCorp": true,
+  "QuorumID": "5"
 }

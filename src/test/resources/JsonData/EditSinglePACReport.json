@@ -4,12 +4,12 @@
     {
       "op": "replace",
       "path": "/Juris",
-      "value": "SF"
+      "value": "MD"
     },
     {
       "op": "replace",
       "path": "/Version",
-      "value": "532"
+      "value": "537"
     }
   ]
 }

@@ -19,5 +19,6 @@
     "CombinedSortName": "AR-BNK",
     "IsActive": true,
     "ReIndex": false,
-    "IsMarylandCaucusComm": false
-  }
+    "IsMarylandCaucusComm": false,
+    "QuorumID": "3"
+}

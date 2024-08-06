@@ -11,6 +11,6 @@
   "CompanyID": 142975,
   "Version": 0,
   "Party": "",
-  "IsDisplayed": true
-
+  "IsDisplayed": true,
+  "QuorumID": "3"
 }
